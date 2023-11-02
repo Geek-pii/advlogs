@@ -1,0 +1,107 @@
+.pagination {
+  &--document {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &--webinar {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 65px;
+  }
+  margin-left:  40px;
+  margin-right:  40px;
+  border-top: 1px solid $boder-color;
+  ul {
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+    li {
+      display: inline-block;
+      margin: 0 auto;
+      width: 38px;
+      height: 38px;
+      font-size: (18/16)*1em;
+      padding-top: 10px;
+      color: #a3aebf;
+      position: relative;
+     
+      &::before {
+        position: absolute;
+        content: '';
+        top: 42%;
+        left: 0;
+        width: 1px;
+        height: 18px;
+        background-color: #e1e5eb;
+      }
+      &.active {
+        a {
+          color: $text-color;
+        }
+        &::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: $brand-green-mind;
+        }
+      }
+      &:hover{
+        a {
+          color: $text-color;
+        }
+        &::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background-color: $brand-green-mind;
+        }
+      }
+      &:first-child, &:last-child {
+        border: none;
+        border-radius: 50%;
+        background-color: #e5ebef;
+        line-height: (18/38);
+        &::before {
+          content: none;
+        }
+        &:first-child:hover, &:last-child:hover{
+          background: #4baa42;
+          >a{
+            color:#fff;
+          }
+        }
+      }
+
+      a {
+        color: #a3aebf;
+      }
+    }
+  }
+}
+@media(max-width: 479px) {
+  .pagination {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media(max-width: 380px) {
+  .pagination {
+    ul {
+      li {
+        width: 30px;
+        height: 30px;
+        &:first-child, &:last-child {
+          line-height: (18/30);
+          padding-top: 7px;
+        }
+      }
+    }
+  }
+}

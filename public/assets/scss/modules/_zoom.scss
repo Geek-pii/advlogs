@@ -1,0 +1,35 @@
+.imageZoom {
+    display: block;
+}
+.zoomContainer {
+    overflow: hidden;
+}
+.zoomLens {
+    
+}
+
+.magnifierRentgen {
+    box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	.magnifier-loupe {
+        overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: rgba(161,207,103,0.5) 6px solid;
+		@include box-shadow(0 0 15px rgba(0,0,0,0.1));
+		cursor: none;
+		transform: scale(1.4);
+        display: none;
+        
+        img {
+            max-width: inherit;
+		}
+		
+		@media (max-width: 767px) {
+			display: none !important;
+		}
+    }
+}

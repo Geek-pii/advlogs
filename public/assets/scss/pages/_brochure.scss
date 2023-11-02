@@ -1,0 +1,202 @@
+//brochure list
+.brochure__content {
+    &.book {
+        padding: 5px 40px 77px;
+    }
+    padding: 5px 40px;
+    .breadcrumb{
+        max-width: inherit;
+        padding-bottom:0;
+    }
+    &__title {
+        max-width: 920px;
+        margin: 0 auto
+    }
+    &__list {
+        font-size: 0;
+        margin-left: -18px;
+        margin-right: -18px;
+        margin-bottom: 100px;
+    }
+    &__hover {
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 8px;
+            right: -8px;
+            bottom: 8px;
+            background: #9fcf67;
+            z-index: 0;
+            opacity: 0;
+            @include transition(all 0.2s);
+        }
+    }
+    &__img {
+        border: 1px solid #ebebeb;
+        position: relative;
+        z-index: 1;
+        >a {
+            position: relative; 
+             @include bg-box(190, 269);
+            z-index: 9;
+        }
+    }
+    &__item {
+        font-size: 16px;
+        width: 20%;
+        position: relative;
+        padding: 18px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        h4 {
+            font-size: (16/16)*1em;
+            margin-bottom: (3/16)*1em;
+            margin-top: (17/16)*1em;
+            >a{
+                color: #262626;
+                &:hover{
+                    color: #4aa940;
+                }
+            }
+        }
+        &:hover {
+            .brochure__content__hover {
+                &:before {
+                    opacity: 1;
+                    @include transition(all 0.2s);
+                }
+            }
+        }
+    }
+}
+
+.brochure__link {
+    a {
+        color: #4aa940;
+        &:first-child:after {
+            content: "|";
+            display: inline-block;
+            color: #989898;
+            margin: 0 5px;
+        }
+        &:hover{
+            color: #262626;
+        }
+    }
+}
+
+// brochure detail
+.subheader__news {
+    padding-top: (18/16)*1em;
+    padding-bottom: (10/16)*1em;
+    padding-left: 44px;
+    h1 {
+        margin: 0;
+        font-size: (30/16)*1em;
+        text-transform: uppercase;
+    }
+    .breadcrumb {
+        max-width: inherit;
+    }
+}
+
+.btn-download {
+    color: #00a651;
+    text-transform: uppercase;
+    font-size: (16/16)*1em;
+    position: relative;
+    padding-right: 30px;
+    &:after {
+        background: url($image-path + "icons/ic-file.svg");
+        content: '';
+        width: 18px;
+        height: 24px;
+        position: absolute;
+        display: inline-block;
+        vertical-align: middle;
+        right: 0;
+    }
+}
+#fix-scale {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 990px;
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+   position: relative;
+}
+
+.book-arrow {
+    opacity: 0;
+    z-index: -111;
+}
+
+
+.news__other {
+    background: #f6f6f6;
+    padding-top: 25px;
+    padding-bottom: 30px;
+    .news__slider {
+        margin-left: -18px;
+        margin-right: -18px;
+        .arrow--prev{
+            left:-50px;
+        }
+        .arrow--next{
+            right:-50px; 
+        }
+        .brochure__content__item {
+            width: auto;
+            display: block;
+        }
+    }
+    .headings {
+        margin-bottom: (5/16)*1em;
+    }
+    .news--slide.arrow {
+        margin-top: 0;
+        top: (190/247)*100%;
+    }
+    
+}
+@media (max-width:1200px) {
+    .news__other { 
+        .slick-slider .arrow--prev{
+        left: 0;
+    }
+    .slick-slider .arrow--next {
+        right: 0;
+    }}
+   
+}
+@media (max-width: 992px) {
+    .brochure__content {
+        &__item {
+            width: 33.333%;
+        }
+    }
+    .subheader__news {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .brochure__content {
+        &__item {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    .df-container {
+        min-height: 200px !important;
+        min-width: 200px !important;
+    }
+}

@@ -1,0 +1,182 @@
+.headings {
+    margin-bottom: (30/16)*1em;
+    > * {
+        margin: 0;
+        display: inline-block;
+        color: $brand-main;
+        font-weight: 400;
+        text-transform: uppercase;
+        position: relative;
+
+        background: url($image-path + 'icons/ic-head-border.svg') no-repeat (10/36)*1em center, url($image-path + 'icons/ic-head-bg.svg') no-repeat (4/36)*1em center;
+        background-size: (14/36)*1em, (14/36)*1em;
+    }
+    span {
+        display: block;
+        position: relative;
+        z-index: 0;
+        padding: (3/36)*1em (31/36)*1em 0 (35/36)*1em;
+
+        a {
+            color: $brand-main;
+            &:hover {
+                color: $brand-warning;
+            }
+        }
+    }
+
+    &.text-center {
+        span {
+            background: url($image-path + 'icons/ic-head-bg.svg') no-repeat right center;
+            background-size: (14/36)*1em;
+            
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                right: (6/36)*1em;
+                bottom: 0;
+                background: url($image-path + 'icons/ic-head-border.svg') no-repeat right center;
+                background-size: (14/36)*1em;
+            }
+        }
+    }
+
+    &--2 {
+        > * {
+            background: none;
+            text-transform: none;
+            color: #fff;
+        }
+
+        span {
+            padding: 0;
+
+            &:before {
+                display: none;
+            }
+
+            &.line-1 {
+                font-size: (24/36)*1em;
+                text-transform: uppercase;
+                color: $brand-warning;
+
+                a {
+                    color: $brand-warning;
+
+                    &:hover {
+                        color: rgba(#fff, 0.8);
+                    }
+                }
+            }
+        }
+    }
+
+    &--3 {
+        overflow: hidden;
+        margin-bottom: 1em;
+
+        > * {
+            padding: 0;
+            background: none;
+
+            color: $panel-heading-icon;
+        }
+
+        span {
+            padding: 0;
+            display: inline-block;
+            padding-right: 15px;
+            
+            &:before,
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                right: -2000px;
+                height: 1px;
+                background-color: $panel-heading-icon;
+            }
+
+            &:before {
+                margin-top: -2px;
+            }
+
+            &:after {
+                margin-top: 2px;
+            }
+        }
+        &.step {
+            margin-bottom: 10px;
+        }
+        &.user {
+            font-size: (24/16)*1em;
+            line-height: (65/24);
+            margin-top: 15px;
+            margin-bottom: 10px !important;
+            padding-left: 15px;
+            margin-right: 15px;
+        }
+    }
+    &--user {
+        margin-top: (43/16)*1em;
+        margin-bottom: (72/16)*1em;
+    }
+    &--elinkHome {
+        > * {
+            background: none;
+        }
+        span {
+            padding: 0;
+            color: #41a640;
+        }
+        margin: 0;
+        padding-top: 5px;
+        &.elinkContact {
+            margin-bottom: 18px;
+        }
+    }
+    &--4{
+        margin-bottom: em(20);
+        border-top: 1px solid #e1e1e1;
+        margin-top: em(70);
+        padding-top: em(30);
+        h2 {
+            font-size: em(24);
+            color: #49aa41;
+        }
+        
+        @media (max-width: 1360px) {
+            margin-top: em(30);
+        }
+        @media (max-width: 992px) {
+            margin-top: em(16);
+            padding-top: em(20);
+        }
+    }
+}
+
+.content {
+    &__heading {
+        font: {
+            size: (30/16)*1em;
+            weight: 400;
+        }
+        padding-top: (10/30)*1em;
+        margin: 0 0 (10/30)*1em;
+        text-transform: uppercase;
+        color: $brand-green-mind;
+        display: block;
+        i {
+            background-color: $brand-green-mind;
+            border-radius: 50%;
+            color: $body-bg;
+            margin-right: 15px;
+        }
+    }
+}

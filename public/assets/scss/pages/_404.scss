@@ -1,0 +1,39 @@
+.page__404{
+    overflow: hidden;
+    padding-top: 160px;
+    padding-bottom: 260px;
+    background-image: url($image-path + "bg-404.jpg");
+    background-size: 100% auto;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-color: #d0f0ff;
+    &__content{
+        text-align: center;
+        p{
+            margin: (20/16)*1em 0  0px (10/16)*1em; padding: 0;
+            font-size: (24/16)*1em;
+            ~ p {
+                font-size: (30/16)*1em;
+                >a{
+                    color:#259728;
+                    text-decoration: underline;
+                &:hover{
+                    color: #f5821f;
+                }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 992px) {
+    .page__404{
+        &__content{
+            p{
+                font-size: (20/16)*1em;
+                ~ p{
+                    font-size: (24/16)*1em;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,327 @@
+.mainslider {
+    &__item {
+        position: relative;
+
+        &__inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+
+            @include translate(0, -50%);
+        }
+
+        &__bg {
+            position: relative;
+            @include bg-box(1920, 930);
+
+            &:after {
+                padding-top: calc(100vh - 108px);
+            }
+
+            img {
+                display: none !important;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+        h1,
+        .h1 {
+            font-family: inherit;
+            font-size: (70/14)*1em;
+            font-weight: 900;
+            color: rgba(#fff, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 0;
+            line-height: 1.2;
+        }
+        h2,
+        .h2 {
+            font-size: (64/14)*1em;
+            margin: 0;
+            font-weight: 900;
+            color: rgba(#fff, 0.7);
+            letter-spacing: 0.1em;
+            line-height: 1.2;
+        }
+
+        .layer {
+            .item {
+                overflow: hidden;
+                display: inline-block;
+                transform: none;
+                margin-right: 0.35em;
+            }
+            span {
+                display: inline-block;
+                transition: transform .6s cubic-bezier(.65,.02,.23,1);
+                transform: translate(20%, 100%);
+                position: relative;
+                z-index: 1;
+
+                &.animate {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+        .btn {
+            transition: all .6s cubic-bezier(.65,.02,.23,1);
+            transform: translate(20%, 100%);
+            visibility: hidden;
+            @include opacity(0);
+            @include transition-delay(0s);
+        }
+
+        &.slick-current {
+            .btn {
+                visibility: visible;
+                @include opacity(1);
+                transform: translate(0, 0);
+                @include transition-delay(0.5s);
+            }
+        }
+
+        &--panorama {
+            position: relative;
+
+            .navProduct {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                z-index: 1;
+                background: #00853e;
+                background: rgba(#00853e, 0.5);
+                padding: 7px;
+                border-radius: 0 0 6px 0;
+
+                @include translate(0, -50%);
+                @include transition(all 0.2s ease-in-out);
+
+                .close {
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+
+                    font-family: 'ElegantIcons';
+                    color: #fff;
+                    background: #00853e;
+                    background: rgba(#00853e, 0.5);
+                    border-radius: 0 6px 6px 0;
+                    font-weight: 400;
+                    text-shadow: none;
+                    font-size: (36/16)*1em;
+                    line-height: (53/36);
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+                    padding-right: 13px;
+                    @include opacity(1);
+
+                    &:before,
+                    &:after {
+                        content: "\34";
+                        @include transition(all 0.2s ease-in-out);
+                    }
+
+                    &:before {
+                        @include opacity(0.5);
+                    }
+
+                    &:after {
+                        position: absolute;
+                        margin-left: (7/36)*1em;
+                        left: 0;
+                    }
+
+                    &:hover {
+                        &:before {
+                            @include opacity(0.9);
+                        }
+                        &:after {
+                            margin-left:  (10/36)*1em;
+                        }
+                    }
+                }
+
+                ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        font-size: (22/16)*1em;
+                        line-height: (30/22);
+                        text-transform: uppercase;
+                        color: #fff;
+                        padding: (15/22)*1em 20px;
+                        border-radius: 6px;
+                        background: #00853e;
+                        cursor: pointer;
+
+                        @include transition(all 0.2s ease-in-out);
+
+                        + li {
+                            margin-top: 4px;
+                        }
+
+                        &:hover {
+                            background: rgba(#00853e, 0.5);
+                        }
+
+                        &.active {
+                            background: #439c41;
+                            cursor: default;
+                            // pointer-events: none;
+                        }
+                        a {
+                            color: #fff;
+                        }
+                    }
+                }
+
+                &.hide {
+                    display: block !important;
+                    @include translate(-100%, -50%);
+
+                    .close {
+                        &:before,
+                        &:after {
+                            content: "\35";
+                        }
+                    }
+                }
+            }
+
+            .panoramaContent {
+                background:  #5d6263;
+                > div {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    
+                    visibility: hidden;
+                    @include opacity(0);
+                    @include transition(all 0.2s ease-in-out);
+
+                    &.active {
+                        display: block;
+                        position: static;
+                        visibility: visible;
+                        @include opacity(1);
+                    }
+                }
+            }
+        }
+    } 
+
+    .slick-dots {
+        bottom: 11px;
+    }
+    @media screen and (max-width: 1399px){
+        font-size: 12px;
+    }
+    @media screen and (max-width: 1199px){
+        &__item {
+            h1,
+            .h1 {
+                font-size: (50/14)*1em;
+            }
+            h2,
+            .h2 {
+                font-size: (26/14)*1em;
+            }
+    
+        }
+    }
+    @media screen and (max-width: 991px){
+        &__item {
+            h1,
+            .h1 {
+                font-size: (40/14)*1em;
+            }
+            h2,
+            .h2 {
+                font-size: (20/14)*1em;
+            }
+    
+        }
+    }
+    @media screen and (max-width: 767px){
+        
+        &__item {
+            h1,
+            .h1 {
+                font-size: (34/14)*1em;
+                margin-top: 10px;
+                padding: 0 15px;
+            }
+            h2,
+            .h2 {
+                font-size: (20/14)*1em;
+                margin-bottom: 0;
+                padding: 0 15px;
+            }
+            
+            &__bg {
+                &:after {
+                    padding-top: calc(100vh - 128px);
+                }
+            }
+
+            &--panorama {
+                .navProduct {
+                    font-size: 12px;
+                    @include translate(-100%, -50%);
+    
+                    .close {    
+                        &:before,
+                        &:after {
+                            content: "\35";
+                        }
+                    }
+    
+                    ul {
+                        font-size: 12px;
+                    }
+    
+                    &.hide {
+                        @include translate(0, -50%);
+    
+                        .close {
+                            &:before,
+                            &:after {
+                                content: "\34";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 479px){
+        &__item {
+            .btn {
+                padding: (10/13)*1em (18/13)*1em;
+            }  
+            
+            &--panorama {
+                .navProduct {
+                    font-size: 10px;
+                    ul {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,237 @@
+.afterLogin {
+    background-color: #ebebeb;
+    position: relative;
+    z-index: 9;
+    .container{
+        position: relative;
+    }
+    &--home {
+        background-color: #fff;
+    }
+    &__content {
+        position: relative;
+        border-bottom: 1px solid #ebebeb;
+        .name {
+            padding-top: 8px;
+            padding-bottom: 5px;
+            cursor: pointer;
+            position: relative;
+            &__first {
+                @include bg-box(32, 32);
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin-right: 8px;
+                position: absolute;
+                top: 50%;
+                right: 120px;
+                transform: translate(0,-50%);
+            }
+            &__full {
+                font-size: (16/16)*1em;
+                font-family: $font-family-sans-serif;
+                color: #3aa23b;
+                font-weight: 700;
+                padding-right: 16px;
+                position: relative;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: 50%;
+                    right: 0;
+                    width: 0px;
+                    height: 0px;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-top: 6px solid #3aa23b;
+                    transform: translate(0, -50%);
+                }
+            }
+        }
+        .subInfo {
+            z-index: 1;
+            &.active {
+              display: block;
+            }
+            display: none;
+            position: absolute;
+            content: '';
+            top: 45px;
+            right: 0;
+            background-color: #fff;
+            padding-top: 8px;
+            padding-bottom: 16px;
+            &__content {
+                list-style: none;
+                padding-left: 0;
+                padding-top: 10px;
+                margin-bottom: 0;
+                // a {
+                //     color: #262626;
+                // }            
+                &__item {
+                    font-size: (14/16)*1em;
+                    font-family: $font-family-sans-serif;
+                    padding: 6px 0;
+                    padding-right: 60px;
+                    i {
+                        color: #4eab43;
+                        margin-right: 25px;
+                        padding-left: 17px;
+                    }
+                    span {
+                        color: #262626;
+                    }
+                    &.active, &:hover {
+                        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a1cf67+0,a1cf67+50,a1cf67+100&0+1,0.5+50,0+100 */
+                        background: -moz-linear-gradient(left, rgba(161, 207, 103, 0) 0%, rgba(161, 207, 103, 0) 1%, rgba(161, 207, 103, 0.5) 50%, rgba(161, 207, 103, 0) 100%);
+                        /* FF3.6-15 */
+                        background: -webkit-linear-gradient(left, rgba(161, 207, 103, 0) 0%, rgba(161, 207, 103, 0) 1%, rgba(161, 207, 103, 0.5) 50%, rgba(161, 207, 103, 0) 100%);
+                        /* Chrome10-25,Safari5.1-6 */
+                        background: linear-gradient(to right, rgba(161, 207, 103, 0) 0%, rgba(161, 207, 103, 0) 1%, rgba(161, 207, 103, 0.5) 50%, rgba(161, 207, 103, 0) 100%);
+                        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1cf67', endColorstr='#00a1cf67', GradientType=1);
+                        /* IE6-9 */
+                        span {
+                            color: #4eab43;
+                        }
+                    }
+                }
+            }
+        }
+        .allLogo {
+            img{
+                max-height:32px;
+            }
+            ul {
+                list-style: none;
+                padding-top: 7px;
+                padding-left: 0;
+                padding-bottom: 7px;
+                margin: 0;
+                li {
+                    display: inline-block;
+                    vertical-align: middle;
+                    &:first-child {
+                        margin-right: 75px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar.affix-top {
+    .elink {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+        .navbar-brand {
+             padding: 10px 0;
+             @media (max-width: 992px){ padding: 5px 0;}
+            > img {
+                height: 60px;
+                // padding-top: 7px;
+                // padding-bottom: 7px;
+                @include transition(all 0.2s ease-in-out);
+                @media (max-width: 767px){
+                    height: 40px;
+                } 
+            }
+        }
+    }
+}
+.navbar.affix {
+    .elink {
+        padding-top: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+        .navbar-brand {
+            > img {
+                height: 40px;
+                @include transition(all 0.2s ease-in-out);
+            }
+        }
+    }
+}
+
+@media(max-width: 1400px) {
+    .navbar-fixed {
+        &.elink {
+            .navbar-collapse {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media(max-width: 1199px) {
+    .navbar-fixed {
+        &.elink {
+            > .container {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 767px) {
+    .navbar-fixed {
+        &.elink {
+            .navbar-toggle {
+                right: 8px;
+            }
+        }
+    }
+}
+
+@media(max-width: 479px) {
+    .afterLogin {
+        border-bottom: 1px solid #ebebeb;
+        .allLogo {
+            ul {
+                li {
+                    &:first-child {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        &__content {
+            border-bottom: none;
+            .name {
+                position: relative;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: 50%;
+                    right: 0;
+                    width: 0px;
+                    height: 0px;
+                    border-left: 6px solid transparent;
+                    border-right: 6px solid transparent;
+                    border-top: 6px solid #3aa23b;
+                    -webkit-transform: translate(0, -50%);
+                    transform: translate(0, -50%);
+                }
+                &__first {
+                    margin-right: 16px;
+                    position: inherit;
+                    top: unset;
+                    right: unset;
+                    transform: translate(0);
+                }
+                &__full {
+                    display: none;
+                }
+            }
+        }
+    }
+    // .navbar-fixed {
+    //     &.elink {
+    //         .navbar-toggle {
+    //             right: 8px;
+    //         }
+    //     }
+    // }
+}

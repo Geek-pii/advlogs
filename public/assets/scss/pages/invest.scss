@@ -1,0 +1,249 @@
+.investlanding {
+    background-image: url($image-path + "product-langding-bg.png");
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #edfdfd;
+    &__one {
+        padding-top: 2px;
+        .col-md-6 {
+            margin-bottom: 20px;
+        }
+        .table-full {
+            overflow: hidden;
+        }
+        &__item {
+            position: relative;
+            &__img {
+                @include bg-box(580, 297)
+            }
+            &__info {
+                @include position(absolute, 30px, 30px, 30px, 30px, 2);
+                background: #008640;
+                background: rgba(0, 134, 64, 0.7);
+                color: #fff;
+                text-align: center;
+                padding: (20/16)*1em (20/16)*1em (20/16)*1em;
+                line-height: (30/16)*1em;
+                h3 {
+                    margin: 0;
+                    font-size: (30/16)*1em;
+                    display: inline-block;
+                    border-bottom: 1px solid #fff;
+                    color: #fff;
+                    padding: 5px 18px;
+                    margin-bottom: (8/16)*1em;
+                    text-transform: uppercase;
+                    font-weight: normal;
+                    a{
+                        &:hover{
+                            color: #f5821f
+                        }
+                    }
+                }
+                p {
+                    margin-bottom: 0;
+                }
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    li {
+                        >a {
+                            color: #fff;
+                            &:hover {
+                                color: #f5821f
+                            }
+                        }
+                    }
+                }
+                a {
+                    color: #fff;
+                }
+            }
+            &__scroll {
+                max-height: calc(100% - (54/16)*1em - (20/16)*1em);
+                overflow-y: auto;
+            }
+        }
+    }
+    &__two {
+        padding: 10px 80px;
+        overflow: hidden;
+        &__info {
+            background: url($image-path + "bg-vitri.jpg") no-repeat right bottom #d9f3f8;
+            background-size: 40%;
+        }
+        .panel-group {
+            padding: 25px 25px 25px 5px;
+        }
+        .item-map {
+            background: #fff;
+            text-align: center;
+        }
+    }
+    &__three {
+        overflow: hidden;
+        padding-top: 15px;
+        .investlanding__one__item__info {
+            ul {
+                max-width: 380px;
+                margin: 0 auto;
+                li {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                }
+            }
+        }
+    }
+    &__four {
+        padding-top: 10px;
+        &__content {
+            background: url($image-path + "tu-van-bg.jpg") no-repeat center center;
+            background-size: cover;
+            padding: (150/16)*1em 10px;
+            position: relative;
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                text-align: center;
+                position: relative;
+                z-index: 2;
+                li {
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-transform: uppercase;
+                    font-size: (24/16)*1em;
+                    &:first-child:before {
+                        display: none;
+                    }
+                    &:before {
+                        content: "|";
+                        display: inline-block;
+                        color: #fff;
+                        margin: 0 (30/16)*1em;
+                    }
+                    >a {
+                        color: #fff;
+                        &:hover {
+                            color: #f5821f;
+                        }
+                    }
+                }
+            }
+            &:after {
+                content: "";
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 60%;
+                position: absolute;
+                background: -moz-linear-gradient(top, rgba(12, 135, 69, 0) 0%, rgba(12, 135, 69, 0) 16%, rgba(12, 135, 69, 1) 100%);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(12, 135, 69, 0) 0%, rgba(12, 135, 69, 0) 16%, rgba(12, 135, 69, 1) 100%);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(12, 135, 69, 0) 0%, rgba(12, 135, 69, 0) 16%, rgba(12, 135, 69, 1) 100%);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000c8745', endColorstr='#0c8745', GradientType=0);
+                /* IE6-9 */
+            }
+        }
+    }
+}
+
+.hide__map {
+    height: 0;
+    overflow: hidden;
+    &.show__map {
+        height: auto;
+    }
+}
+
+.table-full {
+    display: table;
+    width: 100%;
+    height: 100%
+}
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle
+}
+
+/*Resposive*/
+@media (max-width: 1200px) {
+    .investlanding{
+        &__one {
+                h3 {
+                    font-size: 20px;
+                }
+        }
+    }
+
+}
+@media (max-width: 992px) {
+    .investlanding {
+        &__one {
+                h3 {
+                    font-size: 18px;
+                }
+            &__item {
+                &__info {
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+        &__two {
+            padding: 10px;
+            &__info {
+                background: #d7f2f7;
+            }
+            .panel-group {
+                padding: (20/16)*1em;
+            }
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .investlanding {
+        &__one {
+            h3 {
+                font-size: 16px;
+            }
+        }
+        &__four {
+            ul {
+                li {
+                    font-size: 14px;
+                    &:before {
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+.client-info{
+    max-height: 400px;
+}
+
+@media (max-width: 320px) {
+    .investlanding {
+        &__four {
+            ul {
+                li {
+                    width: 100%;
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

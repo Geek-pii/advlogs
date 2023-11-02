@@ -1,0 +1,390 @@
+.recruit__item {
+    background: #fff;
+    @include border-radius(10px);
+    padding: 15px 35px;
+    margin-top: 20px;
+    .item_height {
+        min-height: 60px;
+        >a {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: (18/16)*1em;
+            color: $text-color;
+            line-height: (20/16);
+            /*display: inline-block;*/
+            @include transition( all 0.3s);
+            &:hover {
+                color: #4aa940;
+            }
+        }
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.wrap__date {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.recruit__date {
+    color: $text-color-gray;
+    white-space: nowrap;
+    &:before {
+        content: "\35";
+        font-family: 'ElegantIcons';
+        margin-left: -4px;
+        display: inline-block;
+    }
+}
+
+.recruit__date__2 {
+    &:before {
+        content: "\e023";
+        font-family: 'ElegantIcons';
+        color: $text-color-green;
+        display: inline-block;
+        margin-right: 6px;
+    }
+}
+
+.recruit__heading {
+    font-size: (24/16)*1em;
+    color: $text-color;
+    margin: 0;
+}
+
+.recruitment__content {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px 40px 50px;
+    .recruit__contact {
+        background: {
+            // image: url($image-path + "carrer-bg.jpg");
+            position: bottom right;
+            repeat: no-repeat;
+            size: cover;
+        }
+        text-align: center;
+        padding:30px;
+        a {
+            color: #fff;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        h4 {
+            text-transform: uppercase;
+            color: #fff;
+            font-size: (24/16)*1em;
+            margin: 0;
+        }
+        h5 {
+            text-transform: uppercase;
+            color: #fff;
+            font-size: (16/16)*1em;
+            margin: (15/16)*1em 0 (15/16)*1em;
+        }
+        p {
+            color: #fff;
+            span:first-child {
+                border-left: none;
+            }
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 18px;
+                position: relative;
+                border-left: 1px solid #fff;
+                line-height: 1.5;
+            }
+        }
+        .form-group {
+            &.table {
+                display: table;
+                max-width: 700px;
+                margin: 20px auto 0 auto;
+            }
+            .form-input {
+                display: table-cell;
+                background: #fff;
+                @include border-radius(30px);
+                width: 80%;
+                padding: 7px;
+            }
+            .form-cell:first-child {
+                border-right: 2px solid #ebebeb;
+            }
+            .form-cell {
+                display: inline-block;
+                vertical-align: middle;
+                width: 49%;
+                text-align: left;
+            }
+        }
+        .form-control {
+            border-bottom: none;
+            height: 30px;
+            padding: 0px 0px 0px 10px;
+        }
+        select.form-control {
+            color: #a9a9a9;
+        }
+    
+        &.recruit__contact-ndt {
+            padding: 50px 44px;
+            h5 {
+                margin-bottom: 30px
+            }
+        }
+    }
+    .recruit__info {
+        margin-top: 20px;
+        h3 {
+            font-size: (20/16)*1em;
+            font-weight: bold;
+            margin-bottom: (5/16)*1em;
+        }
+        p {
+            line-height: (30/16);
+            margin: 0 0 8px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li {
+                margin-bottom: 5px;
+                &:before {
+                    content: "+";
+                    display: inline-block;
+                    padding-right: 7px;
+                }
+            }
+        }
+        a {
+            color: $text-color;
+        }
+    }
+    .recruit__detail {
+        max-width: 900px;
+        margin: 10px auto
+    }
+    &_envir {
+        p {
+            line-height: (30/16)*1em;
+            text-align: justify;
+            margin-top: (25/16)*1em;
+            margin-bottom: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            li {
+                position: relative;
+                padding-left: 14px;
+                line-height: (30/16)*1em;
+                &:before {
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    @include border-radius(50%);
+                    position: absolute;
+                    left: 0;
+                    top: 12px;
+                    background: #9ece67;
+                }
+            }
+        }
+        .headings--3 {
+            margin-top: (9/16)*1em;
+            margin-bottom: (9/16)*1em;
+            font-size: (24/16)*1em;
+        }
+    }
+}
+
+.recruit__list {
+    margin-bottom: 40px;
+}
+
+.recruit__form_result {
+    position: relative;
+    background: #fff;
+    padding: 20px 60px 0px 60px;
+    margin-top: 30px;
+    .recruit__heading_form {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: (20/16)*1em
+    }
+    textarea.form-control {
+        height: 230px;
+    }
+    .btn-lh {
+        min-width: 130px;
+    }
+    .apply__expand__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5em;
+        line-height: 1.66666667;
+        width: 1.66666667em;
+        border-radius: 50%;
+        background: #ebebeb;
+        text-align: center;
+        color: #999;
+    }
+}
+
+.bootstrap-filestyle {
+    margin-top: 10px;
+    .btn-chosse {
+        font-size: 14px;
+        background: #a1ce67;
+        border-radius: 5px !important;
+        padding: 5px 21px;
+        .icon_cloud-upload {
+            color: #fff;
+        }
+        .buttonText {
+            color: #fff;
+            text-transform: capitalize;
+        }
+    }
+    .form-control {
+        border-bottom: none !important;
+        color: #ee1c25;
+        padding-left: 10px !important;
+    }
+}
+
+.group-span-filestyle {
+    outline: none
+}
+.btn-search {
+    font-size: 0;
+    width: 103px;
+    height: 40px;
+    background-image: url($image-path + 'icons/ic-search.svg');
+    background-color: #a1ce67;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &:hover {
+        background-image: url($image-path + 'icons/ic-search.svg');
+        background-color: #00853f;
+    }
+}
+.recruitment__position {
+    background: #f5f5f5;
+    padding: 35px 28px 20px;
+    .headings {
+        margin-bottom: (10/16)*1em;
+    }
+    &_slide__item {
+        padding: 10px;
+    }
+    .recruit__item {
+        margin-top: 0;
+    }
+}
+
+.career--slide{
+    &.arrow {
+        margin-top: -1.1875em;
+        &.arrow--prev{
+            left: -50px;
+        }
+        &.arrow--next{
+            right: -50px;
+        }
+    }
+}
+
+/*Responisve*/
+
+@media (max-width: 992px) {
+    .recruit__list {
+        .recruit__item {
+            padding: 10px;
+            .item_height {
+                min-height: inherit;
+            }
+        }
+    }
+    .career--slide{
+        &.arrow {
+            &.arrow--prev{
+                left: 0px;
+            }
+            &.arrow--next{
+                right: 0px;
+            }
+        }
+    }
+    .recruit__form_result {
+        padding: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .recruitment__content {
+        padding: 10px;
+        &.recruit__contact-ndt {
+            padding: 10px;
+        }
+        .recruit__contact {
+            p {
+                span {
+                    display: block;
+                    border-left: none;
+                    padding-bottom: 5px
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .recruitment__content {
+        .recruit__contact {
+            .form-group {
+                .form-input {
+                    display: block;
+                    width: auto;
+                }
+            }
+            .btn-search {
+                margin-top: 10px;
+                width: 100%
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .recruitment__content {
+        .recruit__contact {
+            .form-group {
+                .form-cell {
+                    display: block;
+                    width: auto;
+                    border-right: none !important;
+                    &:first-child {
+                        border-bottom: 1px solid #ebebeb;
+                    }
+                }
+            }
+        }
+    }
+    .break480 {
+        width: auto;
+        text-align: left;
+    }
+}

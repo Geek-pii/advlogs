@@ -1,0 +1,6 @@
+.nav-tabs>li>a {
+    border: 1px solid transparent !important;
+}
+.nav-tabs>li>.active {
+    border-color: #dee2e6 #dee2e6 #fff !important;
+}

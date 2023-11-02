@@ -1,0 +1,39 @@
+.memberCompanies {
+    @extend %clearfix;
+    margin-bottom: (40/15)*1em;
+    &__item {
+        float: left;
+        width: (100/3)*1%;
+        text-align: center;
+        background: #fff;
+        border: 1px solid #e1e1e1;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        padding: 30px 20px 40px;
+
+        img {
+            margin-bottom: (10/16)*1em;
+        }
+
+        h4 {
+            font-size: (18/16)*1em;
+            font-weight: 400;
+            line-height: (25/18)*1em;
+            overflow: hidden;
+            height: (25/18)*2em;
+        }
+    }
+
+    @media (max-width: 767px) { 
+        &__item {
+            width: 50%;
+            padding: 10px 10px 20px;
+        }
+    }
+    @media (max-width: 480px) { 
+        &__item {
+            width: 100%;
+            padding: 10px 10px 20px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'there_are_no_comments' => '**คำเตือนนักเที่ยว อย่าโอนเงินเพื่อมัดจำก่อนทุกกรณี โปรดชำระเงินหน้างานเท่านั้น',
+    'authentication_required' => 'จำเป็นต้องมีการตรวจสอบสิทธิ์',
+    'you_must_login_to_post_a_comment' => 'คุณต้องเข้าสู่ระบบเพื่อแสดงความคิดเห็น',
+    'log_in' => 'เข้าสู่ระบบ',
+    'reply' => 'ตอบ',
+    'edit' => 'แก้ไข',
+    'delete' => 'ลบความคิดเห็น',
+    'edit_comment' => 'แก้ไขความคิดเห็น',
+    'update_your_message_here' => 'อัปเดตข้อความของคุณที่นี่:',
+    'update' => 'อัปเดต',
+    'cancel' => 'ยกเลิก',
+    'reply_to_comment' => 'ตอบกลับความคิดเห็น',
+    'enter_your_message_here' => 'ป้อนข้อความของคุณที่นี่:',
+    'enter_your_captcha_here' => 'ป้อน captcha ของคุณที่นี่:',
+    'markdown_cheatsheet' => '<a target="_blank" href=":url">Markdown</a> cheatsheet.',
+    'submit' => 'ส่งความเห็น',
+    'your_message_is_required' => 'ข้อความของคุณจำเป็น',
+    'your_captcha_is_required' => 'ต้องระบุแคปช่าของคุณ',
+    'enter_your_email_here' => 'กรอกอีเมลของคุณที่นี่:',
+    'enter_your_name_here' => 'ใส่ชื่อของคุณที่นี่:',
+    'success' => 'ความคิดเห็นของคุณจะถูกตรวจสอบในไม่ช้า',
+    'your_captcha_is_invalid' => 'แคปช่าของคุณไม่ถูกต้อง',
+];

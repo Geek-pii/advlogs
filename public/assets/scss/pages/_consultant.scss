@@ -1,0 +1,235 @@
+.consultantPage {
+    background: {
+        color: #b7e1e4;
+        size: 100% auto;
+        repeat: no-repeat;
+        position: top center;
+    }
+
+    .subHeader {
+        background: transparent;
+        &::before {
+            display: none;
+        }
+    }
+
+    .consultant {
+        background: {
+            image: url($image-path + 'consultant-bg-bottom.png');
+            color: transparent;
+            size: 100% auto;
+            repeat: no-repeat;
+            position: top center;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            padding-top: percentage(80/1907);
+        }
+
+        &__content {
+            &.col-md-8 {
+                float: none;
+                margin: 0 auto;
+            }
+
+            background: rgba(#fff, 0.95);
+            padding: 25px 20px;
+
+            .headings {
+                margin-bottom: (20/16)*1em;
+            }
+
+            .form {
+                max-width: 800px;
+                margin: 0 auto;
+
+                .row {
+                    margin-left: -20px;
+                    margin-right: -20px;
+
+                    > div {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+    &--updateUser {
+        background:none;
+        .consultant {
+            background: {
+                image: url($image-path + 'user/bg-update.png');
+                position: bottom center;
+                size: 100% 100%;
+            }
+            &__content {
+                position: relative;
+                background: rgba(255, 255, 255, 0.8);
+                .userName {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100px;
+                    height: 100px;
+                    @include bg-box(100, 100);
+                    border: 3px solid #fff;
+                    border-radius: 50%;
+                }
+                .form {
+                    label {
+                        text-transform: none;
+                        font-size: (14/16)*1em;
+                        font-weight: 700;
+                        color: #696969;
+                    }
+                    input {
+                        ::-webkit-input-placeholder { color: #262626 !important; opacity: 1 !important; }
+                        :-moz-placeholder { color: #262626 !important; opacity: 1 !important; }
+                        ::-moz-placeholder { color: #262626 !important; opacity: 1 !important; }
+                        :-ms-input-placeholder { color: #262626 !important; opacity: 1 !important; }
+                        font-size: (20/16)*1em;
+                    }
+                    .form-group {
+                        &--custom {
+                            margin-bottom: 0;
+                        }
+                        .uploadImage {
+                            display: table;
+                            width: 100%;
+                        }
+                        .image {
+                            background-repeat: no-repeat;
+                            display: table-cell;
+                            text-align: left;
+                        }
+                        &.submit {
+                            a {
+                                color: #226c46;
+                                padding-left: 27px;
+                                text-decoration: underline;
+                                font-family: $font-family-sans-serif;
+                                font-size: (16/16)*1em;
+                                text-transform: uppercase;
+                            }
+                            .btn-lh {
+                                color: #226c46;
+                                min-width: 140px;
+                                opacity: 1;
+                            }
+                        }
+                        .chosen-container-single {
+                            .chosen-single {
+                                span {
+                                    font-size: (20/16)*1em;
+                                }
+                            }
+                        }
+                    }
+                    .form-check {
+                        margin-top: 55px;
+                        label {
+                            color: #262626;
+                            font-size: (16/16)*1em;
+                            font-family: $font-family-sans-serif;
+                            font-weight: 400;
+                        }
+                    }
+                    .styled-checkbox {
+                        position: absolute; // take it out of document flow
+                        opacity: 0; // hide it
+                      
+                        & + label {
+                          position: relative;
+                          cursor: pointer;
+                          padding: 0;
+                        }
+                      
+                        // Box.
+                        & + label:before {
+                          content: '';
+                          margin-right: 15px;
+                          display: inline-block;
+                          width: 14px;
+                          height: 14px;
+                          background: #fff;
+                          border-radius: 4px;
+                          border: 2px solid #4baa42;
+                        }
+                      
+                        // Box hover
+                        &:hover + label:before {
+                          background: #4baa42;
+                          border-radius: 4px;
+                        }
+                      
+                        // Box checked
+                        &:checked + label:before {
+                          background: #4baa42;
+                          border-radius: 4px;
+                        }
+                      
+                        // Checkmark. Could be replaced with an image
+                        &:checked + label:after {
+                            content: '';
+                            position: absolute;
+                            left: 2px;
+                            top: 11px;
+                            background: white;
+                            width: 2px;
+                            height: 2px;
+                            box-shadow: 
+                              2px 0 0 white,
+                              4px 0 0 white,
+                              4px -2px 0 white,
+                              4px -4px 0 white,
+                              4px -6px 0 white,
+                              4px -8px 0 white;
+                            transform: rotate(45deg);
+                        }
+                    }
+                    .upload-btn-wrapper {
+                        position: relative;
+                        overflow: hidden;
+                        display: inline-block;
+                        vertical-align: middle;
+                        .btn {
+                            color: #fff;
+                            background-color: #a1ce67;
+                            padding: 6px 20px;
+                            border-radius: 4px;
+                            font-weight: 700;
+                            text-transform: unset;
+                            opacity: 1;
+                            i {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                      
+                    .upload-btn-wrapper input[type=file] {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.linkTo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    opacity: 0;
+    z-index: 9999;
+    &--lhc {
+        height: 80%;
+    }
+}

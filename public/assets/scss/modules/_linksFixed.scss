@@ -1,0 +1,230 @@
+.linksFixed {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 2;
+
+    @include translate(0, -50%);
+
+    ul {
+        @extend %list;
+
+        li {
+
+            + li {
+                margin-top: 2px;
+            }
+
+            &,
+            a {
+                display: block;
+            }
+
+            a {
+                position: relative;
+                width: (55/16)*1em;
+                background: rgba($brand-green-drak, 0.5);
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    max-width: percentage(41/55);
+
+                    @include translate(-50%, -50%);
+
+                    &:last-child {
+                        display: none;
+                    }
+                }
+
+                &:after {
+                    content: " ";
+                    display: block;
+                    padding-top: 100%;
+                }
+
+                &:hover {
+                    background: $brand-green;
+                }
+            }
+        }
+    }
+}
+
+.chat-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 9px;
+    background: #fff;
+    width: (50/16)*1em;
+    border-radius: 50%;
+    z-index: 2;
+    @include box-shadow(0 0 0 6px rgba(#06190f, 0.3));
+
+    &:after {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+
+    img {
+        width: percentage(26/50);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+
+        @include translate(-50%, -50%);
+    }
+
+    span {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        color: #fff;
+        background: rgba(#000, 0.5);
+        border-radius: 3px;
+        white-space: nowrap;
+        font-size: (14/16)*1em;
+        padding: 3px 12px;
+        margin-right: 24px;
+        visibility: hidden;
+
+        @include opacity(0);
+        @include transition(all 0.2s ease-in-out);
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -6px;
+            border-style: solid;
+            border-width: 6px 0 6px 7px;
+            border-color: transparent rgba(#000, 0.5);
+        }
+
+        @include translate(0, -50%);
+    }
+
+    &.top {
+        bottom: 120px;
+    }
+
+    &:hover {
+
+        @include box-shadow(0 0 0 7px rgba(#06190f, 0.3));
+
+        span {
+            margin-right: 14px;
+            visibility: visible;
+            @include opacity(1);
+        }
+    }
+}
+
+
+.reservation {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 20px;
+
+    background: #4baa42;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: (18/16)*1em;
+    padding: (10/18)*1em (15/18)*1em;
+    border-radius: 0;
+    border: none;
+
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: darken(#4baa42, 10%);
+    }
+
+    @media (min-height: 970px) {
+        margin-top: 80px;
+    }
+
+    @media (max-width: 767px) {
+        top: auto;
+        bottom: 100%;
+        margin-top: 0;
+        left: 0;
+        right: 0;
+
+    }
+}
+
+@media (max-width: 991px){
+    .chat-btn.top {
+        bottom: 160px;
+    }
+}
+
+@media (max-width: 767px){
+    .linksFixed {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        @include box-shadow(0 0 24px rgba(#000, 0.1));
+
+        @include translate(0, 0);
+
+        ul {
+            width: 100%;
+
+            > li {
+                float: left;
+                width: 25%;
+                
+                + li {
+                    margin: 0;
+                }
+
+                a {
+                    width: 100%;
+                    background: none;
+
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: 1px;
+                        height: 30px;
+                        margin-top: -15px;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        background: #f2f2f2;
+                    }
+
+                    &:after {
+                        content: " ";
+                        display: block;
+                        padding-top: 50px;
+                    }
+                    
+                    img {
+                        &:first-child {
+                            display: none;
+                        }
+
+                        &:last-child {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .chat-btn {
+        bottom: 120px !important;
+    }
+}
