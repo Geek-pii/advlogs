@@ -19,4 +19,4 @@ jobs:
           script: |
             cd /var/www/docker-lemp/www/advlogs
             git pull origin main
-            docker exec container-php74 ash -c "cd advlogs-web;composer install;php artisan optimize"
+            docker exec container-php74 ash -c "cd advlogs;composer install;php artisan optimize"
