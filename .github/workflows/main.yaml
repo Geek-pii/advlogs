@@ -17,6 +17,6 @@ jobs:
           key: ${{ secrets.DEPLOY_PRODUCTION_KEY }}
           port: ${{ secrets.DEPLOY_PRODUCTION_SSH_PORT }}
           script: |
-            cd /var/www/docker-lemp/www/advlogs-web
+            cd /var/www/docker-lemp/www/advlogs
             git pull origin main
             docker exec container-php74 ash -c "cd advlogs-web;composer install;php artisan optimize"
