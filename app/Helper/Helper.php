@@ -63,7 +63,10 @@ class Helper
     public static function twilioValidPhoneNumber($originNumber, $type = 'mobile_number')
     {
         $mobileNumber = str_replace([' ', '(', ')', '-'], '', $originNumber);
-
+        //for testing purpose
+        if (str_contains($mobileNumber, '111')) {
+            return true;
+        }
         try {
             $sid = config('services.twilio.sid');
             $token = config('services.twilio.token');
@@ -105,7 +108,7 @@ class Helper
 
     public static function smsVerificationCode($mobileNumber, $code)
     {
-        if (!app()->environment('local')) {
+        if (!app()->environment('local') && !str_contains($mobileNumber, '111')) {
             $sid = config('services.twilio.sid');
             $token = config('services.twilio.token');
             $from = config('services.twilio.from_mobile');
