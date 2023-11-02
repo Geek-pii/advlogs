@@ -1,0 +1,22 @@
+name: Build and Deploy Develop
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_DEVELOPMENT_HOST }}
+          username: ${{ secrets.DEPLOY_DEVELOPMENT_USER }}
+          key: ${{ secrets.DEPLOY_DEVELOPMENT_KEY }}
+          port: ${{ secrets.DEPLOY_DEVELOPMENT_SSH_PORT }}
+          script: |
+            cd /var/www/docker-lemp/www/advlogs
+            git pull origin develop
+            docker exec container-php74 ash -c "cd advlogs;composer install;php artisan optimize;php artisan migrate;php artisan db:seed"
