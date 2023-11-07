@@ -9,7 +9,8 @@
 <script src="{{ asset('assets/js/aos.js') }}"></script>
 <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/wait-me/waitMe.min.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}?v={{ filemtime(public_path('assets/js/app.js')) }}"></script>
+
 <script
     src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.map_key') }}&libraries=places&&callback=initMap">
 </script>

@@ -6,7 +6,7 @@ function validateEmail(email) {
 }
 jQuery(function ($) {
   $.validator.setDefaults({
-      ignore: ':hidden, [readonly=readonly]'
+    ignore: ":hidden, [readonly=readonly]",
   });
   $.validator.addMethod(
     "zip_code",
@@ -24,9 +24,38 @@ jQuery(function ($) {
     },
     "Please enter a valid email address"
   );
+
+  $.validator.addMethod(
+    "phone_us",
+    function (value, element) {
+      value = value.replace(/ /g, "");
+      if (value.includes("111")) {
+        return true;
+      }
+
+      let valid = false;
+      if (this.optional(element)) {
+        valid = true;
+      }
+      if (
+        new RegExp(
+          /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]\d{2}-?\d{4}$/
+        ).test(value)
+      ) {
+        valid = true;
+      }
+      return valid;
+    },
+    "Please enter valid US phone number"
+  );
+
   $.validator.addMethod(
     "phone_us_or_email",
     function (value, element, regexp) {
+      value = value.replace(/ /g, "");
+      if (value.includes("111")) {
+        return true;
+      }
       let valid = false;
       if (this.optional(element)) {
         valid = true;

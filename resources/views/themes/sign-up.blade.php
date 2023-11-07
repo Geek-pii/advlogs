@@ -108,6 +108,7 @@
                     },
                     mobile_number: {
                         required: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
@@ -180,6 +181,7 @@
                     },
                     primary_contact_number: {
                         required: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
