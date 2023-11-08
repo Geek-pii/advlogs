@@ -26,6 +26,7 @@ class Address extends Model
         'zip',
         'telephone',
         'email',
+        'mailing_address_same_as_physical'
     ];
 
     public function addressable()

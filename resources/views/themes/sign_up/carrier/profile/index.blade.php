@@ -95,10 +95,6 @@
 @endsection
 @section('scripts')
     <script>
-        $.validator.addMethod("usPhoneNumber", function(value, element) {
-            console.log(value)
-            return this.optional(element) || /\(\d{3}\) \d{3}-\d{4}/.test(value);
-        }, "Please enter a valid US phone number.");
         (function($, window) {
             $.fn.replaceContactOptions = function(options) {
                 var self, $option;
@@ -123,6 +119,7 @@
             "full_name": "---"
         }, ...sameAsOptions];
         $('#next-button').click(function() {
+            console.log('step: ');
             console.log(globalStep);
             if (globalStep == 1) {
                 $('#step-2').find('form').submit();
@@ -356,7 +353,6 @@
             $('#same_as_phsical').click(function() {
                 let checked = $(this).prop('checked');
                 if (checked) {
-                    step2Validator.valid();
                     $('.mailling-address').find("input[name=mailing_street_address]").val($(
                         '.physical-address').find('input[name="street_address"]').val());
                     $('.mailling-address').find("input[name=mailing_city]").val($('.physical-address').find(
@@ -365,6 +361,7 @@
                         .find('input[name="state"]').val());
                     $('.mailling-address').find("input[name=mailing_zip]").val($('.physical-address').find(
                         'input[name="zip"]').val());
+                    $('#step-2').find('form').valid();
                 } else {
                     $('.mailling-address').find("input[name=mailing_street_address]").val('');
                     $('.mailling-address').find("input[name=mailing_city]").val('');
@@ -390,11 +387,14 @@
                     'mailing_zip': 'required',
                     'company_telephone': {
                         required: false,
-                        usPhoneNumber: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
                         }
+                    },
+                    'company_email': {
+                        email: true
                     }
                 },
                 invalidHandler: function(f, v) {},
@@ -472,10 +472,6 @@
          * step 3
          * */
         $(document).ready(function() {
-            $.validator.addMethod("usPhoneNumber", function(value, element) {
-                console.log(value)
-                return this.optional(element) || /\(\d{3}\) \d{3}-\d{4}/.test(value);
-            }, "Please enter a valid US phone number.");
             var step3Validator = $('#step-3').find('form').validate({
                 onfocusout: function(element) {
                     $(element).valid()
@@ -487,7 +483,7 @@
                     'job_title[]': 'required',
                     'mobile_number[]': {
                         required: false,
-                        usPhoneNumber: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
@@ -495,12 +491,19 @@
                     },
                     'business_phone_number[]': {
                         required: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
                         }
                     },
-                    'email[]': 'required'
+                    'business_phone_ext[]' : {
+                        number: true
+                    },
+                    'email[]': {
+                        required: true,
+                        email: true
+                    }
                 },
                 invalidHandler: function(f, v) {},
                 submitHandler: function(form, event) {
@@ -654,7 +657,7 @@
 
                     $(this).rules("add", {
                         required: false,
-                        usPhoneNumber: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
@@ -731,7 +734,7 @@
                     'job_title[]': 'required',
                     'mobile_number[]': {
                         required: false,
-                        usPhoneNumber: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
@@ -739,12 +742,19 @@
                     },
                     'business_phone_number[]': {
                         required: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
                         }
                     },
-                    'email[]': 'required'
+                    'business_phone_ext[]' : {
+                        number: true
+                    },
+                    'email[]': {
+                        required: true,
+                        email: true
+                    }
                 },
                 invalidHandler: function(f, v) {},
                 submitHandler: function(form, event) {
@@ -838,7 +848,7 @@
                     'job_title[]': 'required',
                     'mobile_number[]': {
                         required: true,
-                        usPhoneNumber: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
@@ -846,12 +856,19 @@
                     },
                     'business_phone_number[]': {
                         required: true,
+                        phone_us:true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
                         }
                     },
-                    'email[]': 'required'
+                    'business_phone_ext[]' : {
+                        number: true
+                    },
+                    'email[]': {
+                        required: true,
+                        email: true
+                    }
                 },
                 invalidHandler: function(f, v) {},
                 submitHandler: function(form, event) {

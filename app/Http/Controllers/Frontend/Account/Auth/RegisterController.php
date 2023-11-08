@@ -366,10 +366,11 @@ class RegisterController extends Controller
         $authorizer = $this->guard('account')->user();
         $company = Company::where('id', $authorizer->company_id)->first();
         $companyContacts = $company ? $company->accounts : collect([$authorizer]);
-        $mailingAddress = $authorizer->address()->where('sub_type', 'mailing_address')->first();
+        $physicAddress = $company->address()->where('sub_type', 'physic_address')->first();
+        $mailingAddress = $company->address()->where('sub_type', 'mailing_address')->first();
         $isLast = $request->get('is_last', 0);
         $continueStep = $request->get('pass_step', 0) ? 1 : (Account::CARRIER_PROFILE_STEPS[$authorizer->step_progress] ?? 1);
-        return view('themes.sign_up.carrier.profile.index', compact('company', 'companyContacts', 'mailingAddress', 'isLast', 'continueStep'));
+        return view('themes.sign_up.carrier.profile.index', compact('company', 'companyContacts', 'physicAddress', 'mailingAddress', 'isLast', 'continueStep'));
     }
 
     public function storeCarrierCompanyProfile(Request $request)
@@ -388,7 +389,7 @@ class RegisterController extends Controller
                 $companyProfileInputs = $request->only('carrier_or_dot_search', 'dot_number', 'mc_number', 'company_legal_name', 'company_dba');
                 $companyProfileInputs['account_id'] = $authorizer->id;
                 $physicAddress = $request->only('street_address', 'city', 'state', 'zip', 'company_telephone', 'company_email');
-                $mailingAddress = $request->only('mailing_street_address', 'mailing_city', 'mailing_state', 'mailing_zip');
+                $mailingInputs = $request->only('mailing_street_address', 'mailing_city', 'mailing_state', 'mailing_zip', 'mailing_address_same_as_physical');
                 if ($companyId = $request->get('company_id', false)) {
                     $company = Company::find($companyId);
                     $company->update($companyProfileInputs);
@@ -404,10 +405,12 @@ class RegisterController extends Controller
                         'email' => $physicAddress['company_email']
                     ]);
                     $mailingAddress->update([
-                        'street_address' => $mailingAddress['mailing_street_address'],
-                        'city' => $mailingAddress['mailing_city'],
-                        'state' => $mailingAddress['mailing_state'],
-                        'zip' => $mailingAddress['mailing_zip']
+                        'street_address' => $mailingInputs['mailing_street_address'],
+                        'city' => $mailingInputs['mailing_city'],
+                        'state' => $mailingInputs['mailing_state'],
+                        'zip' => $mailingInputs['mailing_zip'],
+                        'mailing_address_same_as_physical' => isset($mailingInputs['mailing_address_same_as_physical']) ? true : false
+
                     ]);
                 } else {
 
@@ -433,11 +436,12 @@ class RegisterController extends Controller
                         'email' => $physicAddress['company_email']
                     ]);
                     $company->address()->create([
-                        'street_address' => $mailingAddress['mailing_street_address'],
-                        'city' => $mailingAddress['mailing_city'],
-                        'state' => $mailingAddress['mailing_state'],
-                        'zip' => $mailingAddress['mailing_zip'],
-                        'sub_type' => 'mailing_address'
+                        'street_address' => $mailingInputs['mailing_street_address'],
+                        'city' => $mailingInputs['mailing_city'],
+                        'state' => $mailingInputs['mailing_state'],
+                        'zip' => $mailingInputs['mailing_zip'],
+                        'sub_type' => 'mailing_address',
+                        'mailing_address_same_as_physical' => isset($mailingInputs['mailing_address_same_as_physical']) ? true : false
                     ]);
                 }
             } else {

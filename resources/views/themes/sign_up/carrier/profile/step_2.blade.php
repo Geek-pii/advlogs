@@ -59,7 +59,7 @@
                     <label>Street Address <span class="text-danger">*</span></label>
                     <input type="text" id="street_address" name="street_address"
                         class="form-control street_address"
-                        @if ($company) value="{{ $company->street_address }}" @endif
+                        @if ($physicAddress) value="{{ $physicAddress->street_address }}" @endif
                         placeholder="Street Address" style="border: none;">
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label>City <span class="text-danger">*</span></label>
                     <input type="text" id="city"name="city" class="form-control city" placeholder="City"
-                        @if ($company) value="{{ $company->city }}" @endif
+                        @if ($physicAddress) value="{{ $physicAddress->city }}" @endif
                         style="border: none;">
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label> State <span class="text-danger">*</span></label>
                     <input type="text" id="company_state"name="state" class="form-control state"
-                        @if ($company) value="{{ $company->state }}" @endif
+                        @if ($physicAddress) value="{{ $physicAddress->state }}" @endif
                         placeholder="State" style="border: none;">
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <div class="form-group">
                     <label> Zip <span class="text-danger">*</span></label>
                     <input type="text" id="zip" name="zip" class="form-control zip_code"
-                        @if ($company) value="{{ $company->zip }}" @endif
+                        @if ($physicAddress) value="{{ $physicAddress->zip }}" @endif
                         placeholder="Zip Code" style="border: none;">
                 </div>
             </div>
@@ -93,15 +93,15 @@
                 <div class="form-group">
                     <label> Carrier Phone #</label>
                     <input type="text" id="company_telephone" name="company_telephone" class="form-control phone_us"
-                           @if ($company) value="{{ $company->telephone }}" @endif
+                           @if ($physicAddress) value="{{ $physicAddress->telephone }}" @endif
                            placeholder=" Carrier Phone" style="border: none;">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label> Email  #</label>
+                    <label> Email</label>
                     <input type="email" id="company_email" name="company_email" class="form-control "
-                           @if ($company) value="{{ $company->email }}" @endif
+                           @if ($physicAddress) value="{{ $physicAddress->email }}" @endif
                            placeholder="Email Address" style="border: none;">
                 </div>
             </div>
@@ -112,7 +112,7 @@
             <div class="col-md-12">
                 <h4><span>Mailing Address </span></h4>
                 <div class="boxes mt-3">
-                    <input type="checkbox" id="same_as_phsical">
+                    <input type="checkbox" id="same_as_phsical" name="mailing_address_same_as_physical" @if ($mailingAddress && $mailingAddress->mailing_address_same_as_physical) checked="checked" @endif>
                     <label style="font-size:14px" for="same_as_phsical">Same as Physical Address </label>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <label>Street Address <span class="text-danger">*</span></label>
                     <input type="text" id="mailing_street_address" name="mailing_street_address"
                         class="form-control street_address"
-                        @if ($company) value="{{ $company->mailing_street_address }}" @endif
+                        @if ($mailingAddress) value="{{ $mailingAddress->street_address }}" @endif
                         placeholder="Street Address">
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <div class="form-group">
                     <label>City <span class="text-danger">*</span></label>
                     <input type="text" id="mailing_city" name="mailing_city" class="form-control city"
-                        @if ($company) value="{{ $company->mailing_city }}" @endif
+                        @if ($mailingAddress) value="{{ $mailingAddress->city }}" @endif
                         placeholder="Contact Person Name">
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     <label> State <span class="text-danger">*</span></label>
                     <input type="text" id="mailing_state" name="mailing_state" class="form-control state"
                         placeholder="State"
-                        @if ($company) value="{{ $company->mailing_state }}" @endif
+                        @if ($mailingAddress) value="{{ $mailingAddress->state }}" @endif
                         style="border: none;">
                 </div>
             </div>
@@ -151,10 +151,9 @@
                     <label> Zip <span class="text-danger">*</span></label>
                     <input type="text" id="mailing_zip" name="mailing_zip" class="form-control zip_code"
                         placeholder="Zip"
-                        @if ($company) value="{{ $company->mailing_zip }}" @endif>
+                        @if ($mailingAddress) value="{{ $mailingAddress->zip }}" @endif>
                 </div>
             </div>
         </div>
     </div>
-
 </form>

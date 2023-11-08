@@ -131,13 +131,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group" id="otherFirstName_div">
-                        <label>First Name</label>
+                        <label>First Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="first_name[]" placeholder="First Name">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group" id="otherLastName_div">
-                        <label>Last Name</label>
+                        <label>Last Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="last_name[]" id="last_name_alter_1"
                             placeholder="Last Name">
                     </div>
@@ -146,14 +146,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group" id="otherJobTitle_div">
-                        <label>Job Title</label>
+                        <label>Job Title<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="job_title[]" id="job_title_alter_1"
                             placeholder="Job Title">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group" id="otherNumber_div">
-                        <label> Business Phone #</label>
+                        <label> Business Phone #<span class="text-danger">*</span></label>
                         <input type="text" class="form-control phone_us" name="business_phone_number[]"
                             id="business_phone_number_alter_1" placeholder="Business Phone #">
                     </div>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group" id="normalphoneNumber_div">
-                        <label>Mobile #</label>
+                        <label>Mobile #<span class="text-danger">*</span></label>
                         <input type="text" class="form-control phone_us" name="mobile_number[]" maxlength="14"
                             placeholder="Mobile #">
                     </div>
@@ -178,7 +178,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label> Email Address</label>
+                        <label> Email Address<span class="text-danger">*</span></label>
                         <input type="email" class="form-control" name="email[]" id="email_alter_1"
                             placeholder="Email Address">
                     </div>

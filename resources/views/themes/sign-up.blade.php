@@ -192,10 +192,14 @@
                     },
                     business_phone_number: {
                         required: true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number') }}",
                             type: "get"
                         }
+                    },
+                    business_phone_ext: {
+                        number: true
                     },
                     security_code: {
                         required: true
