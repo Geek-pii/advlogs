@@ -15,21 +15,16 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->integer('account_id')->unsigned();
-            $table->string('type', 10)->default('billing');
+            $table->morphs('addressable');
+            $table->string('sub_type');
             $table->string('street_address')->nullable();
-            $table->string('city', 20)->nullable();
-            $table->string('state', 20)->nullable();
-            $table->string('zip', 20)->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('job_title')->nullable();
-            $table->string('business_phone_number');
-            $table->string('mobile_number');
-            $table->string('business_phone_ext')->nullable();
-            $table->string('email');
-            $table->string('alternate_email')->nullable();
-            $table->json('invoice_emails')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('email')->nullable();
+            $table->boolean('mailing_address_same_as_physical')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
