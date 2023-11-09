@@ -26,7 +26,7 @@ class AddCompanyIdToRolesTable extends Migration
     public function down()
     {
         Schema::table('role_user', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned()->nullable()->after('user_id');
+            $table->dropColumn('company_id');
         });
     }
 }
