@@ -366,8 +366,8 @@ class RegisterController extends Controller
         $authorizer = $this->guard('account')->user();
         $company = Company::where('id', $authorizer->company_id)->first();
         $companyContacts = $company ? $company->accounts : collect([$authorizer]);
-        $physicAddress = $company->address()->where('sub_type', 'physic_address')->first();
-        $mailingAddress = $company->address()->where('sub_type', 'mailing_address')->first();
+        $physicAddress = $company ? $company->address()->where('sub_type', 'physic_address')->first() : null;
+        $mailingAddress = $company ? $company->address()->where('sub_type', 'mailing_address')->first() : null;
         $isLast = $request->get('is_last', 0);
         $continueStep = $request->get('pass_step', 0) ? 1 : (Account::CARRIER_PROFILE_STEPS[$authorizer->step_progress] ?? 1);
         return view('themes.sign_up.carrier.profile.index', compact('company', 'companyContacts', 'physicAddress', 'mailingAddress', 'isLast', 'continueStep'));

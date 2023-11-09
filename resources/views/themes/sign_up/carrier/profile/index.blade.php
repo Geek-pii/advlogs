@@ -328,6 +328,7 @@
                     $('#step-1').addClass('hidden');
                     $('#prev-button').removeClass('hidden');
                     selectedCarrierIndex = null
+                    $('#step-2').find('form').valid();
                 }
             });
 
@@ -389,7 +390,7 @@
                         required: false,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
@@ -485,7 +486,7 @@
                         required: false,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
@@ -493,7 +494,7 @@
                         required: true,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
@@ -659,7 +660,7 @@
                         required: false,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     });
@@ -736,7 +737,7 @@
                         required: false,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
@@ -744,7 +745,7 @@
                         required: true,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
@@ -850,7 +851,7 @@
                         required: true,
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
@@ -858,7 +859,7 @@
                         required: true,
                         phone_us:true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },

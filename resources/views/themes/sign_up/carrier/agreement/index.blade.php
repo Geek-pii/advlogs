@@ -122,7 +122,7 @@
                     'carrier_certificate_fax': {
                         phone_us: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     }

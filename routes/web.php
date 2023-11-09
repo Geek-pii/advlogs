@@ -28,7 +28,8 @@ Route::get('user/validate-phone-number', function() {
     if ($apiResult) {
         return response()->json($apiResult->api_result, 200);
     }
-    $apiResult = Helper::twilioValidPhoneNumber($number, $type);
+    $acceptType = request()->get('accept');
+    $apiResult = Helper::twilioValidPhoneNumber($number, $acceptType);
     $phoneValidationHistory = new PhoneValidationHistory();
     $phoneValidationHistory->fill([
         'phone_number' => $number,

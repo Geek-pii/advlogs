@@ -60,7 +60,7 @@ class Helper
         return "{$path}/{$name}.{$extension}";
     }
 
-    public static function twilioValidPhoneNumber($originNumber, $type = 'mobile_number')
+    public static function twilioValidPhoneNumber($originNumber, $type = 'mobile')
     {
         $mobileNumber = str_replace([' ', '(', ')', '-'], '', $originNumber);
         //for testing purpose
@@ -85,7 +85,7 @@ class Helper
                     $numberType = $resultArray['lineTypeIntelligence']['type'];
                     $valid = true;
                     Cache::put('type_' . $originNumber, $numberType, now()->addMinutes(60));
-                    if ($type == 'mobile_number') {
+                    if ($type == 'mobile') {
                         if ($numberType == 'mobile') {
                             $valid = true;
                         } else {

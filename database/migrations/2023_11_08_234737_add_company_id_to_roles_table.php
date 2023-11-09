@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddMobileEmailToCompanyAddress extends Migration
+class AddCompanyIdToRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddMobileEmailToCompanyAddress extends Migration
      */
     public function up()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->string("telephone")->nullable()->after('zip');
+        Schema::table('role_user', function (Blueprint $table) {
+            $table->integer('company_id')->unsigned()->nullable()->after('user_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddMobileEmailToCompanyAddress extends Migration
      */
     public function down()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->dropColumn(['telephone']);
+        Schema::table('role_user', function (Blueprint $table) {
+            $table->integer('company_id')->unsigned()->nullable()->after('user_id');
         });
     }
 }

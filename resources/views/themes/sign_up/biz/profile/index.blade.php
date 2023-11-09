@@ -425,14 +425,14 @@
                     'business_phone_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
                     'mobile_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
@@ -497,14 +497,14 @@
                     'business_phone_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
                     'mobile_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
@@ -567,14 +567,14 @@
                     'business_phone_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
                     'mobile_number[]': {
                         required: true,
                         remote: {
-                            url: "{{ route('user.validate-phone-number') }}",
+                            url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
                             type: "get"
                         }
                     },
