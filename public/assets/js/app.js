@@ -204,7 +204,7 @@ jQuery(function ($) {
   /**
    * masks
    */
-  $(".phone_us").mask("(999) 999-9999");
+  $('.phone_us').mask('(000) 000-0000');
   $(".zip_code").mask("00000-0000");
   $(".employer_identification_number").mask("00-0000000", {
     placeholder: "##-#######",
