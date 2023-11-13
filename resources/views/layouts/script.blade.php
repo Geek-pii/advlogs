@@ -26,11 +26,11 @@
         },
         beforeSend: function(jqXHR, settings) {
             const siteUrl = new URL(settings.url);
+            
             if (!_.some(noAjaxLoading, {
                     method: settings.type,
                     pathname: siteUrl.pathname
                 })) {
-
                 $('.content-wrapper').waitMe({
                     effect: 'bounce',
                     text: 'Processing',

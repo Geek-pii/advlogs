@@ -1,4 +1,4 @@
-@extends('auth', ['content_class' => 'login-main-wrapper'])
+@extends('auth', ['content_class' => 'login-main-wrapper content-wrapper'])
 
 @section('styles')
     <style>
