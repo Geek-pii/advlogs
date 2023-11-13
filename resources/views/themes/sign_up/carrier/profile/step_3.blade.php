@@ -78,10 +78,10 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label> Mobile #</label>
+                <label> Mobile # <span class="text-danger">*</span></label>
                 <input type="text" class="form-control phone_us" id="p_dispactch_phone"
                     @if ($primaryContact) value="{{ $primaryContact['mobile_number'] }}" @endif
-                    name="mobile_number[]" placeholder="XXX-XXX-XXXX">
+                    name="mobile_number[]" placeholder="Mobile #">
             </div>
         </div>
     </div>

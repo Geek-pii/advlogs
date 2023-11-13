@@ -68,7 +68,15 @@
         $(document).ready(function() {
             var authUser = {!! json_encode(auth('account')->user()) !!}
             $('#next-button').click(function() {
+                if (step == 1) {
+                    step1Validator.settings.rules['mobile_number'].remote = false;
+                    step1Validator.settings.rules['business_phone_number'].remote = false;
+                }
                 $('#step_' + step).find('form').submit();
+                if (step == 1) {
+                    step1Validator.settings.rules['mobile_number'].remote = true;
+                    step1Validator.settings.rules['business_phone_number'].remote = true;
+                }
             });
             $('#prev-button').click(function() {
                 if (step > 1) {
@@ -79,10 +87,6 @@
                     window.location.href = "carrier-load?pass_step=1&is_last=1";
                 }
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
             var sameAsOptions = {!! json_encode(!empty($companyContacts) ? $companyContacts : [], true) !!};
             sameAsOptions = [{
                 "id": 0,

@@ -1,4 +1,4 @@
-<div id="step-1"  class="@if($step != 1) hidden @endif">
+<div id="step-1" class="@if ($step != 1) hidden @endif">
     <h1 style="margin-bottom:30px"> Carrier Broker Agreement </h1>
     <div class="light-overflow"
         style="background:#fff; padding:25px; margin:0 auto; box-shadow: 0px 0px 5px 1px #d2d2d2;margin-bottom: 40px;">
@@ -16,7 +16,7 @@
                 between Advantage Logistics LLC and {{ auth('account')->user()->company->company_legal_name }}
                 (“Carrier”) and {{ auth('account')->user()->full_name }}. Carrier therefore agrees as follows:
             </p>
-            {!!$agreement !!}
+            {!! $agreement !!}
         </div>
         <div class="row">
             <div class="col-12">
@@ -70,8 +70,7 @@
                         <label for="date_input" class="col-4 p-0"><strong>Date:</strong></label>
                         <input type="text"
                             value="{{ auth('account')->user()->company->agreement_checked? auth('account')->user()->company->agreement_checked_date->format('m/d/Y H:i:s A'): '' }}"
-                            readonly
-                            name="date_input"
+                            readonly name="date_input"
                             class="form-control bg-white date_input text-dark border-bottom border-dark rounded-0"
                             aria-describedby="passwordHelpInline">
                     </div>
@@ -153,8 +152,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                You must agree to this agreement, or if you don’t have the authority to do so, go to the previous page and provide
-    contact information of the Owner or company officer with that authority.
+                You must agree to this agreement, or if you don’t have the authority to do so, go to the previous page
+                and provide
+                contact information of the Owner or company officer with that authority.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Okay</button>

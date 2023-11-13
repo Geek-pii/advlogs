@@ -68,6 +68,19 @@
                         $('#step-1').addClass('hidden');
                         $('#step-2').removeClass('hidden');
                         step = 2;
+                        $.ajax({
+                            method: "POST",
+                            url: "{{ route('account.company.check-agreement') }}",
+                            data: {
+                                "agreement_checked": true
+                            },
+                            success: (response) => {
+                                
+                            },
+                            error: function(data) {
+                            }
+                        });
+
                         $('#next-button').text('Next');
                     } else {
                         $('#must-agree').modal('show');

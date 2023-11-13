@@ -31,18 +31,18 @@
                     pathname: siteUrl.pathname
                 })) {
 
-                    $('.content-wrapper').waitMe({
-                                effect: 'bounce',
-                                text: 'Processing',
-                                bg: 'rgba(255, 255, 255, 0.7)',
-                                color: '#000',
-                                maxSize : '',
-                                waitTime : -1,
-                                textPos : 'vertical',
-                                fontSize : '',
-                                source : '',
-                                onClose : function() {}
-                        });
+                $('.content-wrapper').waitMe({
+                    effect: 'bounce',
+                    text: 'Processing',
+                    bg: 'rgba(255, 255, 255, 0.7)',
+                    color: '#000',
+                    maxSize: '',
+                    waitTime: -1,
+                    textPos: 'vertical',
+                    fontSize: '',
+                    source: '',
+                    onClose: function() {}
+                });
             }
 
         },

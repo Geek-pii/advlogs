@@ -1,4 +1,4 @@
-<form id="search-carrier-form">
+<form id="search-carrier-form" onsubmit="return false">
     <div class="row">
         <div class="col-12 mb-3">
             <h4> Enter MC or DOT #</h4>

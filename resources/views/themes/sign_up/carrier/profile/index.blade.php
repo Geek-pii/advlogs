@@ -41,7 +41,7 @@
 @php
     $step = $continueStep;
     if ($isLast) {
-     $step = 5;
+        $step = 5;
     }
 
 @endphp
@@ -108,131 +108,132 @@
                 });
             };
         })(jQuery, window);
-        var globalStep = {!! $step !!};
-        var authUser = {!! json_encode(auth('account')->user()) !!}
-        var sameAsOptions = {!! json_encode(!empty($companyContacts) ? $companyContacts : [], true) !!};
-        var authUser = {!! json_encode(auth('account')->user()) !!}
-        var carrierList = [];
-        var selectedCarrierIndex = null;
-        sameAsOptions = [{
-            "id": 0,
-            "full_name": "---"
-        }, ...sameAsOptions];
-        $('#next-button').click(function() {
-            console.log('step: ');
-            console.log(globalStep);
-            if (globalStep == 1) {
-                $('#step-2').find('form').submit();
-                $('#prev-button').removeClass('hidden');
-            }
-            if (globalStep == 2) {
-                $('#step-3').find('form').submit();
-            }
-            if (globalStep == 3) {
-                $('#step-4').find('form').submit();
-            }
-            if (globalStep >= 4) {
-                $('#step-5').find('form').submit();
-            }
-            window.scrollTo(0, 0);
-        });
-        $('#prev-button').click(function() {
-            if (globalStep == 1) {
-                $('#step-2').addClass('hidden');
-                $('#step-3').addClass('hidden');
-                $('#step-1').removeClass('hidden');
-                $('#prev-button').addClass('hidden');
-                $('#step-button-group').addClass('hidden');
-                globalStep = 1;
-            }
-            if (globalStep == 2) {
-                $('#step-3').addClass('hidden');
-                $('#step-2').removeClass('hidden');
-                globalStep -= 1;
-            }
-            if (globalStep == 3) {
-                $('#step-4').addClass('hidden');
-                $('#step-3').removeClass('hidden');
-                globalStep -= 1;
-            }
-            if (globalStep >= 4) {
-                $('#step-5').addClass('hidden');
-                $('#step-4').removeClass('hidden');
-                globalStep = 3;
-            }
-            window.scrollTo(0, 0);
-        });
+        $(document).ready(function() {
+            var globalStep = {!! $step !!};
+            var authUser = {!! json_encode(auth('account')->user()) !!}
+            var sameAsOptions = {!! json_encode(!empty($companyContacts) ? $companyContacts : [], true) !!};
+            var authUser = {!! json_encode(auth('account')->user()) !!}
+            var carrierList = [];
+            var selectedCarrierIndex = null;
+            sameAsOptions = [{
+                "id": 0,
+                "full_name": "---"
+            }, ...sameAsOptions];
 
-        $('.profile_information ').delegate('.same_as_select', 'change', function(index) {
-            let selectedElement;
-            let selectedVal = $(this).val();
-            if (selectedVal != 0) {
-                for (let index = 0; index < sameAsOptions.length; index++) {
-                    const element = sameAsOptions[index];
-                    if (element.id == $(this).val()) {
-                        selectedElement = element;
+            // forword
+            $('#next-button').click(function() {
+                console.log('step: ');
+                console.log(globalStep);
+                if (globalStep == 1) {
+                    $('#step-2').find('form').submit();
+                    $('#prev-button').removeClass('hidden');
+                }
+                if (globalStep == 2) {
+                    step3Validator.settings.rules['mobile_number[]'].remote = false;
+                    step3Validator.settings.rules['business_phone_number[]'].remote = false;
+                    $('#step-3').find('form').submit();
+                    step3Validator.settings.rules['mobile_number[]'].remote = true;
+                    step3Validator.settings.rules['business_phone_number[]'].remote = true;
+                }
+                if (globalStep == 3) {
+                    step4Validator.settings.rules['mobile_number[]'].remote = false;
+                    step4Validator.settings.rules['business_phone_number[]'].remote = false;
+                    $('#step-4').find('form').submit();
+                    step4Validator.settings.rules['mobile_number[]'].remote = true;
+                    step4Validator.settings.rules['business_phone_number[]'].remote = true;
+                }
+                if (globalStep >= 4) {
+                    step5Validator.settings.rules['mobile_number[]'].remote = false;
+                    step5Validator.settings.rules['business_phone_number[]'].remote = false;
+                    $('#step-5').find('form').submit();
+                    step5Validator.settings.rules['mobile_number[]'].remote = true;
+                    step5Validator.settings.rules['business_phone_number[]'].remote = true;
+                }
+                window.scrollTo(0, 0);
+            });
+            $('#prev-button').click(function() {
+                if (globalStep == 1) {
+                    $('#step-2').addClass('hidden');
+                    $('#step-3').addClass('hidden');
+                    $('#step-1').removeClass('hidden');
+                    $('#prev-button').addClass('hidden');
+                    $('#step-button-group').addClass('hidden');
+                    globalStep = 1;
+                }
+                if (globalStep == 2) {
+                    $('#step-3').addClass('hidden');
+                    $('#step-2').removeClass('hidden');
+                    globalStep -= 1;
+                }
+                if (globalStep == 3) {
+                    $('#step-4').addClass('hidden');
+                    $('#step-3').removeClass('hidden');
+                    globalStep -= 1;
+                }
+                if (globalStep >= 4) {
+                    $('#step-5').addClass('hidden');
+                    $('#step-4').removeClass('hidden');
+                    globalStep = 3;
+                }
+                window.scrollTo(0, 0);
+            });
+
+            $('.profile_information ').delegate('.same_as_select', 'change', function(index) {
+                let selectedElement;
+                let selectedVal = $(this).val();
+                if (selectedVal != 0) {
+                    for (let index = 0; index < sameAsOptions.length; index++) {
+                        const element = sameAsOptions[index];
+                        if (element.id == $(this).val()) {
+                            selectedElement = element;
+                        }
                     }
                 }
-            }
 
-            if (selectedVal != 0 && selectedElement.id == authUser.id && $(this).hasClass('have_authority_page')) {
-                $('#same_as_same_person').modal('show');
-            } else {
-                $('#have_authority').prop('checked', false);
-                $(this).closest('.contact-form-row').first().find("input[name='first_name[]']").val(
-                    selectedVal == 0 ? '' : selectedElement.first_name);
-                // $(this).closest('.contact-form-row').first().find("input[name='contact_id[]']").val(
-                //     selectedVal == 0 ? '' : selectedElement.id);
-                $(this).closest('.contact-form-row').first().find("input[name='last_name[]']").val(
-                    selectedVal ==
-                    0 ? '' : selectedElement.last_name);
-                $(this).closest('.contact-form-row').first().find("input[name='job_title[]']").val(
-                    selectedVal ==
-                    0 ? '' : selectedElement.job_title);
-                $(this).closest('.contact-form-row').first().find("input[name='business_phone_number[]']").val(
-                    selectedVal == 0 ? '' : selectedElement.business_phone_number);
-                $(this).closest('.contact-form-row').first().find("input[name='mobile_number[]']").val(
-                    selectedVal == 0 ? '' : selectedElement.mobile_number);
-                $(this).closest('.contact-form-row').first().find("input[name='business_phone_ext[]']").val(
-                    selectedVal == 0 ? '' : selectedElement.business_phone_ext);
-                $(this).closest('.contact-form-row').first().find("input[name='email[]']").val(selectedVal ==
-                    0 ?
-                    '' : selectedElement.email);
-                $(this).closest('.contact-form-row').first().find("input[name='alternate_email[]']").val(
-                    selectedVal ==
-                    0 ?
-                    '' : selectedElement.alternate_email);
-            }
-        });
-    </script>
-    <script>
-        /** 
-         * Step 1
-         */
-        $(document).ready(function() {
+                if (selectedVal != 0 && selectedElement.id == authUser.id && $(this).hasClass(
+                        'have_authority_page')) {
+                    $('#same_as_same_person').modal('show');
+                } else {
+                    $('#have_authority').prop('checked', false);
+                    $(this).closest('.contact-form-row').first().find("input[name='first_name[]']").val(
+                        selectedVal == 0 ? '' : selectedElement.first_name);
+                    // $(this).closest('.contact-form-row').first().find("input[name='contact_id[]']").val(
+                    //     selectedVal == 0 ? '' : selectedElement.id);
+                    $(this).closest('.contact-form-row').first().find("input[name='last_name[]']").val(
+                        selectedVal ==
+                        0 ? '' : selectedElement.last_name);
+                    $(this).closest('.contact-form-row').first().find("input[name='job_title[]']").val(
+                        selectedVal ==
+                        0 ? '' : selectedElement.job_title);
+                    $(this).closest('.contact-form-row').first().find(
+                        "input[name='business_phone_number[]']").val(
+                        selectedVal == 0 ? '' : selectedElement.business_phone_number);
+                    $(this).closest('.contact-form-row').first().find("input[name='mobile_number[]']").val(
+                        selectedVal == 0 ? '' : selectedElement.mobile_number);
+                    $(this).closest('.contact-form-row').first().find("input[name='business_phone_ext[]']")
+                        .val(
+                            selectedVal == 0 ? '' : selectedElement.business_phone_ext);
+                    $(this).closest('.contact-form-row').first().find("input[name='email[]']").val(
+                        selectedVal ==
+                        0 ?
+                        '' : selectedElement.email);
+                    $(this).closest('.contact-form-row').first().find("input[name='alternate_email[]']")
+                        .val(
+                            selectedVal ==
+                            0 ?
+                            '' : selectedElement.alternate_email);
+                }
+            });
+            /** 
+             * Step 1 Search Carrier
+             */
             $('#search-carrier-result').delegate('.main_ul', 'click', function() {
                 $('.main_ul').not(this).removeClass('bg-selected');
                 $(this).addClass('bg-selected');
                 selectedCarrierIndex = $(this).data('index');
             });
             $('#search-carrier').click(function() {
-                $('#search-carrier-form').submit();
-            });
-            var searchCarrierValidator = $('#search-carrier-form').validate({
-                onfocusout: function(element) {
-                    $(element).valid()
-                },
-                rules: {
-                    'carrier_mc_or_dot': {
-                        required: true
-                    }
-                },
-                messages: {
-                    carrier_mc_or_dot: "Carrier mc or dot is required"
-                },
-                invalidHandler: function(f, v) {},
-                submitHandler: (form, event) => {
-                    event.preventDefault();
+                if ($('#search-carrier-form').valid()) {
                     $.ajax({
                         method: "GET",
                         url: "{{ route('user.fmcsa.carrier.search') }}",
@@ -288,6 +289,25 @@
                     });
                 }
             });
+            var searchCarrierValidator = $('#search-carrier-form').validate({
+                onfocusout: function(element) {
+                    $(element).valid()
+                },
+                onkeyup: false,
+                rules: {
+                    'carrier_mc_or_dot': {
+                        required: true
+                    }
+                },
+                messages: {
+                    carrier_mc_or_dot: "Carrier mc or dot is required"
+                },
+                invalidHandler: function(f, v) {},
+                submitHandler: (form, event) => {
+                    event.preventDefault();
+                }
+            });
+            // Copy Carrier after Search
             $('#copy-carrier').click(function() {
                 if (selectedCarrierIndex != null) {
                     let response = carrierList[selectedCarrierIndex];
@@ -311,8 +331,10 @@
                         .phyState);
                     $('.physical-address').find('input[name="zip"]').val(response.carrier
                         .phyZipcode);
-                    $('.physical-address').find('input[name="company_telephone"]').val(response.carrier.telephone);
-                    $('.physical-address').find('input[name="company_email"]').val(response.carrier.email_address);
+                    $('.physical-address').find('input[name="company_telephone"]').val(response.carrier
+                        .telephone);
+                    $('.physical-address').find('input[name="company_email"]').val(response.carrier
+                        .email_address);
                     // reset mailling address
                     $('.mailling-address').find("input[name=mailing_street_address]").val(response.carrier
                         .mailing_street ? response.carrier.mailing_street : '');
@@ -344,13 +366,9 @@
                 $('#step-1').addClass('hidden');
                 $('#prev-button').removeClass('hidden');
             });
-        });
-    </script>
-    <script>
-        /*
-         * Step 2
-         */
-        $(document).ready(function() {
+            /*
+             * Step 2 fill company address from pop up
+             */
             $('#same_as_phsical').click(function() {
                 let checked = $(this).prop('checked');
                 if (checked) {
@@ -374,18 +392,41 @@
                 onfocusout: function(element) {
                     $(element).valid()
                 },
+                onkeyup: false,
                 rules: {
-                    'company_legal_name': 'required',
-                    'street_address': 'required',
-                    'mc_number': 'required',
-                    'dot_number': 'required',
-                    'city': 'required',
-                    'state': 'required',
-                    'zip': 'required',
-                    'mailing_street_address': 'required',
-                    'mailing_city': 'required',
-                    'mailing_state': 'required',
-                    'mailing_zip': 'required',
+                    'company_legal_name': {
+                        required: true,
+                    },
+                    'mc_number': {
+                        required: false
+                    },
+                    'dot_number': {
+                        required: false
+                    },
+                    'street_address': {
+                        required: true
+                    },
+                    'city': {
+                        required: true
+                    },
+                    'state': {
+                        required: true
+                    },
+                    'zip': {
+                        required: true
+                    },
+                    'mailing_street_address': {
+                        required: true
+                    },
+                    'mailing_city': {
+                        required: true
+                    },
+                    'mailing_state': {
+                        required: true
+                    },
+                    'mailing_zip': {
+                        required: true
+                    },
                     'company_telephone': {
                         required: false,
                         phone_us: true,
@@ -446,10 +487,11 @@
                                                             '',
                                                             'success')
                                                         .then((
-                                                            confirmed) => {
+                                                            confirmed
+                                                        ) => {
                                                             if (confirmed
                                                                 .isConfirmed
-                                                                ) {
+                                                            ) {
                                                                 window
                                                                     .location
                                                                     .href =
@@ -466,24 +508,20 @@
                     });
                 }
             });
-        });
-    </script>
-    <script>
-        /** 
-         * step 3
-         * */
-        $(document).ready(function() {
+            /** 
+             * step 3 Primary Dispatch Contact
+             * */
             var step3Validator = $('#step-3').find('form').validate({
                 onfocusout: function(element) {
                     $(element).valid()
                 },
-                onkeyup: true,
+                onkeyup: false,
                 rules: {
                     'first_name[]': 'required',
                     'last_name[]': 'required',
                     'job_title[]': 'required',
                     'mobile_number[]': {
-                        required: false,
+                        required: true,
                         phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
@@ -498,7 +536,7 @@
                             type: "get"
                         }
                     },
-                    'business_phone_ext[]' : {
+                    'business_phone_ext[]': {
                         number: true
                     },
                     'email[]': {
@@ -553,14 +591,10 @@
                 }
             });
 
-        });
-    </script>
-    <script>
-        /*
-         * step 4
-         */
+            /*
+             * step 4 Alternate Dispatch Contact
+             */
 
-        $(document).ready(function() {
             function addContact() {
                 let optionString = '';
                 for (let index = 0; index < sameAsOptions.length; index++) {
@@ -626,7 +660,7 @@
                             <div class="form-group" id="otherr_mobNumber_div">
                                 <label> Mobile # <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control phone_us mobile_number" id="business_mobile_number_alter_${i}"
-                                    name="mobile_number[]">
+                                    name="mobile_number[]" placeholder="Mobile #">
                             </div>
                         </div>
                     </div>
@@ -668,7 +702,9 @@
             }
 
             $('#add_contact').click(function() {
-                addContact()
+                if ($('#step-4').find('form').valid()) {
+                    addContact()
+                }
             });
 
             $('.profile_information').delegate('.same_as_select_multiple', 'change', function() {
@@ -683,7 +719,8 @@
                         }
                     }
                 }
-                if (selectedVal != 0 && selectedElement.id == authUser.id && $(this).hasClass('have_authority_page')) {
+                if (selectedVal != 0 && selectedElement.id == authUser.id && $(this).hasClass(
+                        'have_authority_page')) {
                     $('#same_as_same_person').modal('show');
                 } else {
                     $('#have_authority').prop('checked', false);
@@ -697,18 +734,22 @@
                     $(this).closest('.contact-form-row').first().find("input[name='job_title[]']").val(
                         selectedVal ==
                         0 ? '' : selectedElement.job_title);
-                    $(this).closest('.contact-form-row').first().find("input[name='business_phone_number[]']").val(
+                    $(this).closest('.contact-form-row').first().find(
+                        "input[name='business_phone_number[]']").val(
                         selectedVal == 0 ? '' : selectedElement.business_phone_number);
                     $(this).closest('.contact-form-row').first().find(".mobile_number").val(
                         selectedVal == 0 ? '' : selectedElement.mobile_number);
-                    $(this).closest('.contact-form-row').first().find("input[name='business_phone_ext[]']").val(
-                        selectedVal == 0 ? '' : selectedElement.business_phone_ext);
-                    $(this).closest('.contact-form-row').first().find("input[name='email[]']").val(selectedVal ==
-                    0 ?
-                        '' : selectedElement.email);
-                    $(this).closest('.contact-form-row').first().find("input[name='alternate_email[]']").val(
+                    $(this).closest('.contact-form-row').first().find("input[name='business_phone_ext[]']")
+                        .val(
+                            selectedVal == 0 ? '' : selectedElement.business_phone_ext);
+                    $(this).closest('.contact-form-row').first().find("input[name='email[]']").val(
                         selectedVal ==
                         0 ?
+                        '' : selectedElement.email);
+                    $(this).closest('.contact-form-row').first().find("input[name='alternate_email[]']")
+                        .val(
+                            selectedVal ==
+                            0 ?
                             '' : selectedElement.alternate_email);
                 }
             })
@@ -734,7 +775,7 @@
                     'last_name[]': 'required',
                     'job_title[]': 'required',
                     'mobile_number[]': {
-                        required: false,
+                        required: true,
                         phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
@@ -749,7 +790,7 @@
                             type: "get"
                         }
                     },
-                    'business_phone_ext[]' : {
+                    'business_phone_ext[]': {
                         number: true
                     },
                     'email[]': {
@@ -757,7 +798,11 @@
                         email: true
                     }
                 },
-                invalidHandler: function(f, v) {},
+                invalidHandler: function(f, v) {
+                    console.log(f);
+                    console.log('=======');
+                    console.log(f);
+                },
                 submitHandler: function(form, event) {
                     event.preventDefault();
                     $.ajax({
@@ -804,13 +849,10 @@
                     });
                 }
             });
-        })
-    </script>
-    <script>
-        /** 
-         * step 5
-         **/
-        $(document).ready(function() {
+            /** 
+             * step 5
+             **/
+
             $('#have_authority').click(function() {
                 $(this).parent().closest('.contact-form-row').find('.same_as_select').val(0);
                 if ($(this).prop('checked')) {
@@ -857,13 +899,13 @@
                     },
                     'business_phone_number[]': {
                         required: true,
-                        phone_us:true,
+                        phone_us: true,
                         remote: {
                             url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
                             type: "get"
                         }
                     },
-                    'business_phone_ext[]' : {
+                    'business_phone_ext[]': {
                         number: true
                     },
                     'email[]': {

@@ -57,6 +57,7 @@ Route::group([
             Route::post('carrier-company-profile-store', [RegisterController::class, 'storeCarrierCompanyProfile'])->name('account.carrier.company-profile-store');
             Route::get('carrier-agreement', [RegisterController::class, 'carrierAgreement'])->name('account.carrier.agreement');
             Route::post('carrier-submit-agreement', [RegisterController::class, 'carrierSubmitAgreement'])->name('account.carrier.submit-agreement');
+            Route::post('company-check-agreement', [RegisterController::class, 'companyCheckAgreement'])->name('account.company.check-agreement');
             Route::post('carrier-skip-agreement', [RegisterController::class, 'skipAgreement'])->name('account.carrier.skip-agreement');
             Route::get('carrier-load', [RegisterController::class, 'carrierLoad'])->name('account.carrier.load');
             Route::post('carrier-submit-load', [RegisterController::class, 'carrierSubmitLoad'])->name('account.carrier.submit-load');

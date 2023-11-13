@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="form-group" id="otherExt_div">
                             <label> Extension</label>
                             <input type="text" class="form-control" name="business_phone_ext[]"
@@ -80,7 +80,7 @@
                                 id="business_phone_ext_alter_1">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group" id="normalphoneNumber_div">
                             <label>Mobile # <span class="text-danger">*</span></label>
                             <input type="text" class="form-control phone_us mobile_number"

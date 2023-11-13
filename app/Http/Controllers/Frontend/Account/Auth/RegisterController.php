@@ -577,10 +577,22 @@ class RegisterController extends Controller
         return response()->json([], 200);
     }
 
+    public function companyCheckAgreement(Request $request)
+    {
+        $account = $this->guard('account')->user();
+        $company = Company::where('id', $account->company_id)->first();
+        $company->agreement_checked = $request->get('agreement_checked') ? true : false;
+        $company->agreement_checked_account_id = $account->id;
+        $company->agreement_checked_date = date('Y-m-d H:i:s', time());
+        $company->save();
+        return response()->json([], 200);
+    }
+
     public function skipAgreement(Request $request)
     {
         $account = $this->guard('account')->user();
         $company = Company::where('id', $account->company_id)->first();
+        $company->carrier_certificate_fax = $request->get('carrier_certificate_fax', null);
         $company->skip_certification = true;
         $company->save();
         if ($account->account_step_number == 5) {
