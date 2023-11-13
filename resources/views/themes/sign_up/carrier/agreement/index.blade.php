@@ -107,7 +107,9 @@
                             }
                         });
                     } else{
+                        formValidator.settings.rules['carrier_certificate_fax'].remote = false;
                         $('#step-2').find('form').submit();
+                        formValidator.settings.rules['carrier_certificate_fax'].remote = true;
                     }
                 }
             });

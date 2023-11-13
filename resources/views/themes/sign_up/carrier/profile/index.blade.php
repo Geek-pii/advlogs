@@ -122,8 +122,6 @@
 
             // forword
             $('#next-button').click(function() {
-                console.log('step: ');
-                console.log(globalStep);
                 if (globalStep == 1) {
                     $('#step-2').find('form').submit();
                     $('#prev-button').removeClass('hidden');

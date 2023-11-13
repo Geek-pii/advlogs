@@ -2,15 +2,7 @@
 return [
     "no_ajax_loading_routes" => [
         [
-            'pathname' => '/user/account-exist',
-            'method' => 'GET'
-        ],
-        [
             'pathname' => '/user/retrieve-verification-code',
-            'method' => 'GET'
-        ],
-        [
-            'pathname' => '/user/validate-phone-number',
             'method' => 'GET'
         ]
     ],
