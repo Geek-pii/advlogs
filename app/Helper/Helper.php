@@ -94,15 +94,15 @@ class Helper
                     } else {
                         $valid = true;
                     }
-                    return $valid ? true : 'Invalid phone number type. Please use a mobile number.';
+                    return $valid ? true : ($type == 'mobile' ? 'Invalid phone number type. Please use a mobile number.': 'Invalid number, please use a valid phone number');
                 } else {
-                    return 'Please specify a valid US phone number';
+                    return  $type == 'mobile' ? 'Please specify a valid US phone number' : 'Please specify a valid phone number';
                 }
             } else {
-                return 'Please specify a valid US phone number';
+                return $type == 'mobile' ? 'Please specify a valid US phone number' : 'Please specify a valid phone number';
             }
         } catch (Exception $e) {
-            return 'Please specify a valid US phone number';;
+            return $type == 'mobile' ? 'Please specify a valid US phone number' : 'Please specify a valid phone number';
         }
     }
 

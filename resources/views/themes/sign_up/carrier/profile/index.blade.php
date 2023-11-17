@@ -130,22 +130,40 @@
                     step3Validator.settings.rules['mobile_number[]'].remote = false;
                     step3Validator.settings.rules['business_phone_number[]'].remote = false;
                     $('#step-3').find('form').submit();
-                    step3Validator.settings.rules['mobile_number[]'].remote = true;
-                    step3Validator.settings.rules['business_phone_number[]'].remote = true;
+                    step3Validator.settings.rules['mobile_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
+                        type: "get"
+                    };
+                    step3Validator.settings.rules['business_phone_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
+                        type: "get"
+                    };
                 }
                 if (globalStep == 3) {
                     step4Validator.settings.rules['mobile_number[]'].remote = false;
                     step4Validator.settings.rules['business_phone_number[]'].remote = false;
                     $('#step-4').find('form').submit();
-                    step4Validator.settings.rules['mobile_number[]'].remote = true;
-                    step4Validator.settings.rules['business_phone_number[]'].remote = true;
+                    step4Validator.settings.rules['mobile_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
+                        type: "get"
+                    };
+                    step4Validator.settings.rules['business_phone_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
+                        type: "get"
+                    };
                 }
                 if (globalStep >= 4) {
                     step5Validator.settings.rules['mobile_number[]'].remote = false;
                     step5Validator.settings.rules['business_phone_number[]'].remote = false;
                     $('#step-5').find('form').submit();
-                    step5Validator.settings.rules['mobile_number[]'].remote = true;
-                    step5Validator.settings.rules['business_phone_number[]'].remote = true;
+                    step5Validator.settings.rules['mobile_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'mobile']) }}",
+                        type: "get"
+                    };
+                    step5Validator.settings.rules['business_phone_number[]'].remote = {
+                        url: "{{ route('user.validate-phone-number', ['accept' => 'any']) }}",
+                        type: "get"
+                    };
                 }
                 window.scrollTo(0, 0);
             });
