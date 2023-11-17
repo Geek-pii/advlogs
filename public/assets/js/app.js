@@ -46,7 +46,7 @@ jQuery(function ($) {
       }
       return valid;
     },
-    "Please enter valid US phone number"
+    "Please enter valid phone number"
   );
 
   $.validator.addMethod(
@@ -76,7 +76,7 @@ jQuery(function ($) {
       }
       return valid;
     },
-    "Please enter a email or US phone number"
+    "Please enter a email or phone number"
   );
   $.validator.addMethod(
     "strong_password",
