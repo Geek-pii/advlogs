@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label> MC # </label>
+                <label> MC # <span class="text-danger manually-fill">*</span></label>
                 <input id="mc_number" type="text" name="mc_number" class="form-control" placeholder="MC #"
                     @if ($company) value="{{ $company->mc_number }}" @endif
                     style="border: none;">
@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label> DOT # </label>
+                <label> DOT # <span class="text-danger manually-fill">*</span></label>
                 <input id="dot_number" type="text" name="dot_number" class="form-control" placeholder="DOT #"
                     @if ($company) value="{{ $company->dot_number }}" @endif
                     style="border: none;">

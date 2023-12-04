@@ -325,6 +325,9 @@
             });
             // Copy Carrier after Search
             $('#copy-carrier').click(function() {
+                step2Validator.settings.rules['dot_number'].required = false;
+                step2Validator.settings.rules['mc_number'].required = false;
+                $('.manually-fill').css('display', 'none');
                 if (selectedCarrierIndex != null) {
                     let response = carrierList[selectedCarrierIndex];
                     $('#search-carrier-result').modal('hide');
@@ -371,6 +374,13 @@
             });
 
             $('#step-1').delegate('.manully-fill-company', 'click', function() {
+                /**
+                 * manually fill both required
+                 */
+                step2Validator.settings.rules['dot_number'].required = true;
+                step2Validator.settings.rules['mc_number'].required = true;
+                $('.manually-fill').css('display', 'inline-block');
+
                 $("#step-button-group").removeClass('hidden');
                 $('#search-carrier-result').modal('hide');
                 $('#step-2').find('input:not(:hidden)').prop('value', '');
