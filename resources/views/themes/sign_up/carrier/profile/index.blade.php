@@ -509,7 +509,7 @@
                                                 },
                                                 success: function() {
                                                     Swal.fire(
-                                                            'Your application sent, please wait for the administrator to review!',
+                                                            'Your application has been submitted.  Please wait for the administrator to review it.',
                                                             '',
                                                             'success')
                                                         .then((

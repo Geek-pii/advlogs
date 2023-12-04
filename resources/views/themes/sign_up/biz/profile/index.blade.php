@@ -388,7 +388,7 @@
                                                     'company_id': responseText.company_id
                                                 }, 
                                                 success: function() {
-                                                    Swal.fire('Your application sent, please wait for the administrator to review!', '', 'success').then((confirmed) => {
+                                                    Swal.fire('Your application has been submitted.  Please wait for the administrator to review it.', '', 'success').then((confirmed) => {
                                                         if (confirmed.isConfirmed) {
                                                             window.location.href = "{{ route('user.dashboard') }}";
                                                         }
