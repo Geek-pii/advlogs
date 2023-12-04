@@ -29,9 +29,11 @@ jQuery(function ($) {
     "phone_us",
     function (value, element) {
       value = value.replace(/ /g, "");
-      if (value.includes("111")) {
+      console.log(value);
+      if (value.includes("(000)")) {
         return true;
       }
+      
 
       let valid = false;
       if (this.optional(element)) {

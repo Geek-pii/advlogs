@@ -64,7 +64,7 @@ class Helper
     {
         $mobileNumber = str_replace([' ', '(', ')', '-'], '', $originNumber);
         //for testing purpose
-        if (str_contains($mobileNumber, '111')) {
+        if (str_starts_with($mobileNumber, '000')) {
             return true;
         }
         try {
