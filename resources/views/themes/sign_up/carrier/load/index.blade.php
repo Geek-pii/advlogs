@@ -259,9 +259,6 @@
         .pricing-switcher label {
             font-size: 8px !important;
         }
-        .transport-speed .switch, .transport-speed label {
-            width:120px !important;
-        }
     </style>
 @endsection
 @section('content')

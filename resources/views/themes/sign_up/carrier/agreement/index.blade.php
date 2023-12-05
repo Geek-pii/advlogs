@@ -1,4 +1,4 @@
-@extends('sign_up_process', ['content_class' => 'container-fluid'])
+@extends('sign_up_process', ['content_class' => 'container-fluid content-wrapper'])
 @section('styles')
     <style>
         .next-button {
@@ -107,9 +107,7 @@
                             }
                         });
                     } else{
-                        formValidator.settings.rules['carrier_certificate_fax'].remote = false;
                         $('#step-2').find('form').submit();
-                        formValidator.settings.rules['carrier_certificate_fax'].remote = true;
                     }
                 }
             });
@@ -128,6 +126,7 @@
 
             var formValidator = $('#step-2').find('form').validate({
                 onfocusout: function(element) {$(element).valid()},
+                onkeyup: false,
                 rules: {
                     'carrier_certificate_person': 'required',
                     'carrier_certificate_email': {
