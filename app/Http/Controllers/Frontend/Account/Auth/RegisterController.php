@@ -597,6 +597,7 @@ class RegisterController extends Controller
         $company->save();
         if ($account->account_step_number == 5) {
             $account->step_progress = 'agreement_checked';
+            $account->save();
             $email = new SendEmail([], env('NEW_REGISTER_EMAIL_NOTIFICATION_ADDRESS'), 'New Registration', 'New Registration');
             dispatch($email);
         }
